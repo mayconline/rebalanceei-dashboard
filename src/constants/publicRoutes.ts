@@ -4,4 +4,5 @@ export const PUBLIC_ROUTES = [
   '/reset-password',
   '/login',
   '/signup',
+  '/manifest.json',
 ];

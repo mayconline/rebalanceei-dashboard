@@ -19,6 +19,8 @@ export function middleware(request: NextRequest) {
       const redirectTo = ROUTES_PATH.LOGIN;
       return NextResponse.redirect(new URL(redirectTo, request.url));
     }
+
+    NextResponse.next();
   }
 
   if (!isPublicRoute) {
