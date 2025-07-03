@@ -1,4 +1,4 @@
-import { z } from '@/services';
+import { z } from '@/validations';
 
 export const LoginFormSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),

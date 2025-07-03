@@ -12,9 +12,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { type z, zodResolver } from '@/services';
 import { handleNotify } from '@/utils';
-import { LoginFormSchema } from '@/validations';
+import { LoginFormSchema, type z, zodResolver } from '@/validations';
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginFormSchema>>({
