@@ -1,14 +1,13 @@
 'use client';
 
-import { Label } from '@radix-ui/react-label';
-import { Switch } from '@/components/ui/switch';
+import { Label, Switch } from '@/components/ui';
 import { useTheme } from '@/hooks';
 
 export const ThemeSwitch = () => {
   const { theme, loading, handleToggleTheme } = useTheme();
 
   return loading ? null : (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center justify-end space-x-2">
       <Switch
         id="theme-toggl"
         checked={theme === 'light'}

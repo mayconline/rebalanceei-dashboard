@@ -1,17 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-
-import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Button, Form, Input, useForm } from '@/components/ui';
 import { handleNotify } from '@/utils';
 import { LoginFormSchema, type z, zodResolver } from '@/validations';
 
@@ -36,37 +25,37 @@ export const LoginForm = () => {
   }
 
   return (
-    <Form {...form}>
+    <Form.Provider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
-        <FormField
+        <Form.Field
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>E-mail</FormLabel>
-              <FormControl>
+            <Form.Item>
+              <Form.Label>E-mail</Form.Label>
+              <Form.Control>
                 <Input
                   placeholder="meuemail@teste.com.br"
                   type="email"
                   {...field}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </Form.Control>
+              <Form.Message />
+            </Form.Item>
           )}
         />
 
-        <FormField
+        <Form.Field
           control={form.control}
           name="password"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>E-mail</FormLabel>
-              <FormControl>
+            <Form.Item>
+              <Form.Label>Password</Form.Label>
+              <Form.Control>
                 <Input placeholder="********" type="password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+              </Form.Control>
+              <Form.Message />
+            </Form.Item>
           )}
         />
 
@@ -79,6 +68,6 @@ export const LoginForm = () => {
           Entrar
         </Button>
       </form>
-    </Form>
+    </Form.Provider>
   );
 };

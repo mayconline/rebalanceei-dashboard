@@ -1,34 +1,28 @@
 import Link from 'next/link';
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, Paragraph, ParagraphAs, ParagraphSize } from '@/components/ui';
 import { LoginForm } from '@/pagesTemplate/LoginPage/LoginForm';
 
 export default function LoginPage() {
   return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Bem vindo de Volta</CardTitle>
-      </CardHeader>
-      <CardContent>
+    <Card.Container className="w-full max-w-sm">
+      <Card.Header>
+        <Card.Title>
+          <Paragraph as={ParagraphAs.H2}>Bem vindo de Volta</Paragraph>
+        </Card.Title>
+      </Card.Header>
+      <Card.Content>
         <LoginForm />
-      </CardContent>
-      <CardFooter>
-        <CardAction>
-          <CardDescription>
+      </Card.Content>
+      <Card.Footer>
+        <Card.Description>
+          <Paragraph size={ParagraphSize.Small}>
             Não tem uma conta?{' '}
             <Link href="/signup" className="text-primary hover:underline">
               Cadastre-se aqui!
             </Link>
-          </CardDescription>
-        </CardAction>
-      </CardFooter>
-    </Card>
+          </Paragraph>
+        </Card.Description>
+      </Card.Footer>
+    </Card.Container>
   );
 }

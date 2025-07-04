@@ -3,7 +3,7 @@
 import { Toaster as Sonner, type ToasterProps } from 'sonner';
 import { useTheme } from '@/hooks';
 
-const Toaster = ({ ...props }: ToasterProps) => {
+export const Notification = ({ ...props }: ToasterProps) => {
   const { theme } = useTheme();
 
   return (
@@ -21,5 +21,3 @@ const Toaster = ({ ...props }: ToasterProps) => {
     />
   );
 };
-
-export { Toaster };

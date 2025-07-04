@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Titillium_Web } from 'next/font/google';
 import './globals.css';
 import { ThemeSwitch } from '@/components/shared';
-import { Toaster } from '@/components/ui/toaster';
+import { Notification } from '@/components/ui';
 import { METADATA, VIEWPORT } from '@/constants';
 
-const inter = Inter({
-  variable: '--font-inter',
+const titillium = Titillium_Web({
+  variable: '--font-titillium',
   subsets: ['latin'],
+  weight: ['400', '600', '700'],
 });
 
 export const metadata: Metadata = METADATA;
@@ -20,10 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${titillium.variable} antialiased`}>
         <ThemeSwitch />
         {children}
-        <Toaster />
+        <Notification />
       </body>
     </html>
   );
