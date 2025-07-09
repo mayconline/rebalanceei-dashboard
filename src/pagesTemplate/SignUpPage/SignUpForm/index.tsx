@@ -1,32 +1,30 @@
 'use client';
 
-import { Button, Form, Input, useForm } from '@/components/ui';
-import { handleNotify } from '@/utils';
-import { SignUpFormSchema, type z, zodResolver } from '@/validations';
+import Link from 'next/link';
+import { Button, Form, Input, Switch, useForm } from '@/components/ui';
+import { useAuth } from '@/hooks';
+import { env } from '@/services';
+import type { SignUpRequestProps } from '@/types';
+import { SignUpFormSchema, zodResolver } from '@/validations';
 
 export const SignUpForm = () => {
-  const form = useForm<z.infer<typeof SignUpFormSchema>>({
+  const { handleSignUp } = useAuth();
+
+  const form = useForm<SignUpRequestProps>({
     resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
       email: '',
       password: '',
+      checkTerms: false,
     },
   });
 
-  function onSubmit(data: z.infer<typeof SignUpFormSchema>) {
-    handleNotify({
-      message: 'Formulário enviado com sucesso!',
-      description: (
-        <pre className="mt-2 w-[320px] rounded-md bg-neutral-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
-
   return (
     <Form.Provider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+      <form
+        className="w-full space-y-6"
+        onSubmit={form.handleSubmit(handleSignUp)}
+      >
         <Form.Field
           control={form.control}
           name="email"
@@ -59,11 +57,38 @@ export const SignUpForm = () => {
           )}
         />
 
+        <Form.Field
+          control={form.control}
+          name="checkTerms"
+          render={({ field }) => (
+            <>
+              <Form.Item className="flex flex-row justify-between">
+                <Form.Label className="text-sm leading-none">
+                  <Link
+                    href={env.NEXT_PUBLIC_PRIVACY_POLICY_URL}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Aceito os termos e condições
+                  </Link>
+                </Form.Label>
+                <Form.Control>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </Form.Control>
+              </Form.Item>
+              <Form.Message />
+            </>
+          )}
+        />
+
         <Button
-          type="submit"
-          disabled={form.formState.isSubmitting || !form.formState.isValid}
           className="w-full"
+          disabled={form.formState.isSubmitting || !form.formState.isValid}
           isLoading={form.formState.isSubmitting}
+          type="submit"
         >
           Criar Conta
         </Button>

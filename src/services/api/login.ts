@@ -2,7 +2,7 @@ import { LOGIN } from '@/graphql/mutation';
 import { api } from '@/services/axios';
 import type { LoginRequestProps, LoginResponseProps } from '@/types';
 
-export const handleLogin = async ({ email, password }: LoginRequestProps) => {
+export const login = async ({ email, password }: LoginRequestProps) => {
   try {
     const response = await api.post<LoginResponseProps>('/', {
       query: LOGIN,

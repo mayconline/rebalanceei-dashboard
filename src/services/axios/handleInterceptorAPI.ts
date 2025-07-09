@@ -16,6 +16,13 @@ export const handleInterceptorRequestAPI = (configRequest: any) => {
   return configRequest;
 };
 
+export const handleInterceptorResponseAPI = (response: any) => {
+  if (response?.data?.errors) {
+    return Promise.reject({ response });
+  }
+  return response;
+};
+
 export const handleInterceptorErrorResponseAPI = async (
   api: AxiosInstance,
   error: any

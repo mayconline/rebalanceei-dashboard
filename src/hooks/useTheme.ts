@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { LOCAL_STORAGE, THEME_VARIANT } from '@/constants';
 import { useLocalState } from '@/hooks';
 
-export function useTheme() {
+export const useTheme = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useLocalState<THEME_VARIANT>(
     LOCAL_STORAGE.THEME,
@@ -31,7 +31,7 @@ export function useTheme() {
         setTheme(THEME_VARIANT.LIGHT);
       }
     } catch (error) {
-      throw error;
+      return error;
     } finally {
       setLoading(false);
     }
@@ -46,4 +46,4 @@ export function useTheme() {
     loading,
     handleToggleTheme,
   };
-}
+};

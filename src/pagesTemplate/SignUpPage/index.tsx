@@ -17,7 +17,7 @@ export default function SignUpPage() {
         <Card.Description>
           <Paragraph size={ParagraphSize.Small}>
             Já possui uma conta?{' '}
-            <Link href="/login" className="text-primary hover:underline">
+            <Link className="text-primary hover:underline" href="/login">
               Faça login aqui!
             </Link>
           </Paragraph>
