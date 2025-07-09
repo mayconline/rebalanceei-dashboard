@@ -1,6 +1,8 @@
 'use client';
 
 import { Button, Form, Input, useForm } from '@/components/ui';
+import { handleLogin } from '@/services/api';
+import { handleSetAuthToken } from '@/services/cookies';
 import { handleNotify } from '@/utils';
 import { LoginFormSchema, type z, zodResolver } from '@/validations';
 
@@ -13,7 +15,14 @@ export const LoginForm = () => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof LoginFormSchema>) {
+  async function onSubmit(data: z.infer<typeof LoginFormSchema>) {
+    const { token, refreshToken } = await handleLogin(data);
+
+    handleSetAuthToken({
+      accessToken: token,
+      refreshToken,
+    });
+
     handleNotify({
       message: 'Formulário enviado com sucesso!',
       description: (
@@ -26,7 +35,7 @@ export const LoginForm = () => {
 
   return (
     <Form.Provider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+      <form className="w-full space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
         <Form.Field
           control={form.control}
           name="email"
@@ -60,10 +69,10 @@ export const LoginForm = () => {
         />
 
         <Button
-          type="submit"
-          disabled={form.formState.isSubmitting || !form.formState.isValid}
           className="w-full"
+          disabled={form.formState.isSubmitting || !form.formState.isValid}
           isLoading={form.formState.isSubmitting}
+          type="submit"
         >
           Entrar
         </Button>
