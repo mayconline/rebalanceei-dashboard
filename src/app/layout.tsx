@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Titillium_Web } from 'next/font/google';
 import './globals.css';
-import { ThemeSwitch } from '@/components/shared';
 import { Notification } from '@/components/ui';
 import { METADATA, VIEWPORT } from '@/constants';
 
@@ -22,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${titillium.variable} antialiased`}>
-        <ThemeSwitch />
         {children}
         <Notification />
       </body>

@@ -5,5 +5,10 @@ export enum ROUTES_PATH {
   SIGNUP = '/signup',
   FORGOT_PASSWORD = '/forgot-password',
   RESET_PASSWORD = '/reset-password',
-  DASHBOARD = '/dashboard',
+  TICKET = '/ticket',
+  REBALANCE = '/rebalance',
+  RENTABILITY = '/rentability',
+  RENTABILITY_WALLET = '/rentability/wallet',
+  RENTABILITY_EARNING = '/rentability/earning',
+  CHART = '/chart',
 }

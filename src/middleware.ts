@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
 
   if (isPublicRoute) {
     if (hasAccessToken) {
-      const redirectTo = ROUTES_PATH.DASHBOARD;
+      const redirectTo = ROUTES_PATH.TICKET;
       return NextResponse.redirect(new URL(redirectTo, request.url));
     }
 

@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
+import { ROUTES_PATH } from '@/constants';
 import { login, signUp } from '@/services/api';
 import { handleSetAuthToken } from '@/services/cookies';
 import type {
@@ -27,7 +28,7 @@ export const useAuth = () => {
         message: `Seja Bem-vindo(a), ${email}!`,
       });
 
-      route.push('/dashboard');
+      route.push(ROUTES_PATH.TICKET);
     },
     [route]
   );
