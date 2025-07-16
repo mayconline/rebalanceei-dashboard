@@ -11,28 +11,43 @@ import {
   useState,
 } from 'react';
 import { Sheet, Tooltip } from '@/components/ui';
-
+import {
+  SIDEBAR_KEYBOARD_SHORTCUT,
+  SIDEBAR_WIDTH,
+  SIDEBAR_WIDTH_ICON,
+  SIDEBAR_WIDTH_MOBILE,
+} from '@/constants';
 import { useIsMobile } from '@/hooks';
+import { handleSetSidebarOpen } from '@/services/cookies/';
 import { mergeClass } from '@/utils';
 
-import { SidebarContent } from './SidebarContent';
-import { SidebarFooter } from './SidebarFooter';
-import { SidebarGroup } from './SidebarGroup';
-import { SidebarHeader } from './SidebarHeader';
-import { SidebarInput } from './SidebarInput';
-import { SidebarInset } from './SidebarInset';
-import { SidebarMenu } from './SidebarMenu';
-import { SidebarMenuSub } from './SidebarMenuSub';
-import { SidebarRail } from './SidebarRail';
-import { SidebarSeparator } from './SidebarSeparator';
-import { SidebarTrigger } from './SidebarTrigger';
-
-const SIDEBAR_COOKIE_NAME = 'sidebar_state';
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-const SIDEBAR_WIDTH = '16rem';
-const SIDEBAR_WIDTH_MOBILE = '18rem';
-const SIDEBAR_WIDTH_ICON = '3rem';
-const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
+export { SidebarContent } from './SidebarContent';
+export { SidebarFooter } from './SidebarFooter';
+export {
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+} from './SidebarGroup';
+export { SidebarHeader } from './SidebarHeader';
+export { SidebarInput } from './SidebarInput';
+export { SidebarInset } from './SidebarInset';
+export {
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+} from './SidebarMenu';
+export {
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from './SidebarMenuSub';
+export { SidebarRail } from './SidebarRail';
+export { SidebarSeparator } from './SidebarSeparator';
+export { SidebarTrigger } from './SidebarTrigger';
 
 type SidebarContextProps = {
   state: 'expanded' | 'collapsed';
@@ -76,7 +91,7 @@ function SidebarProvider({
   const [_open, _setOpen] = useState(defaultOpen);
   const open = openProp ?? _open;
   const setOpen = useCallback(
-    (value: boolean | ((value: boolean) => boolean)) => {
+    async (value: boolean | ((params: boolean) => boolean)) => {
       const openState = typeof value === 'function' ? value(open) : value;
       if (setOpenProp) {
         setOpenProp(openState);
@@ -84,15 +99,17 @@ function SidebarProvider({
         _setOpen(openState);
       }
 
+      await handleSetSidebarOpen(openState);
+
       // This sets the cookie to keep the sidebar state.
-      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+      // document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
     },
     [setOpenProp, open]
   );
 
   // Helper to toggle the sidebar.
   const toggleSidebar = useCallback(() => {
-    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);
+    return isMobile ? setOpenMobile((prev) => !prev) : setOpen((prev) => !prev);
   }, [isMobile, setOpen]);
 
   // Adds a keyboard shortcut to toggle the sidebar.
@@ -155,12 +172,12 @@ function SidebarProvider({
 
 function Sidebar({
   side = 'left',
-  variant = 'sidebar',
-  collapsible = 'offcanvas',
+  variant = 'inset',
+  collapsible = 'icon',
   className,
   children,
   ...props
-}: ComponentProps<'div'> & {
+}: ComponentProps<'aside'> & {
   side?: 'left' | 'right';
   variant?: 'sidebar' | 'floating' | 'inset';
   collapsible?: 'offcanvas' | 'icon' | 'none';
@@ -169,7 +186,7 @@ function Sidebar({
 
   if (collapsible === 'none') {
     return (
-      <div
+      <aside
         className={mergeClass(
           'flex h-full w-(--sidebar-width) flex-col bg-sidebar text-sidebar-foreground',
           className
@@ -178,7 +195,7 @@ function Sidebar({
         {...props}
       >
         {children}
-      </div>
+      </aside>
     );
   }
 
@@ -212,7 +229,7 @@ function Sidebar({
   }
 
   return (
-    <div
+    <aside
       className="group peer hidden text-sidebar-foreground md:block"
       data-collapsible={state === 'collapsed' ? collapsible : ''}
       data-side={side}
@@ -232,7 +249,7 @@ function Sidebar({
         )}
         data-slot="sidebar-gap"
       />
-      <div
+      <aside
         className={mergeClass(
           'fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex',
           side === 'left'
@@ -254,21 +271,9 @@ function Sidebar({
         >
           {children}
         </div>
-      </div>
-    </div>
+      </aside>
+    </aside>
   );
 }
-
-Sidebar.Trigger = SidebarTrigger;
-Sidebar.Rail = SidebarRail;
-Sidebar.Inset = SidebarInset;
-Sidebar.Input = SidebarInput;
-Sidebar.Header = SidebarHeader;
-Sidebar.Footer = SidebarFooter;
-Sidebar.Content = SidebarContent;
-Sidebar.Separator = SidebarSeparator;
-Sidebar.Group = SidebarGroup;
-Sidebar.Menu = SidebarMenu;
-Sidebar.MenuSub = SidebarMenuSub;
 
 export { Sidebar, SidebarProvider, useSidebar };

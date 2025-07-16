@@ -7,7 +7,32 @@ export { Notification } from './Notification';
 export { Paragraph, ParagraphAs, ParagraphSize } from './Paragraph';
 export { Separator } from './Separator';
 export { Sheet } from './Sheet';
-export { Sidebar } from './Sidebar';
+export {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupAction,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInput,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuBadge,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSkeleton,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarSeparator,
+  SidebarTrigger,
+  useSidebar,
+} from './Sidebar';
 export { Skeleton } from './Skeleton';
 export { Switch } from './Switch';
 export { Tooltip } from './Tooltip';

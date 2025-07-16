@@ -63,8 +63,8 @@ const MAIN_NAV = [
 const OTHER_NAV = [
   {
     title: 'Tema',
-    href: null,
     icon: SunMoonIcon,
+    action: 'toggleTheme',
   },
   {
     title: 'Ajuda',
@@ -98,6 +98,7 @@ const USER_NAV = [
     title: 'Sair',
     href: null,
     icon: LogOutIcon,
+    action: 'logout',
   },
 ];
 

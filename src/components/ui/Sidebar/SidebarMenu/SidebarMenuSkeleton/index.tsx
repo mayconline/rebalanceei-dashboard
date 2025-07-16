@@ -1,5 +1,5 @@
 import { type ComponentProps, type CSSProperties, useMemo } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Skeleton } from '@/components/ui';
 import { mergeClass } from '@/utils';
 
 export const SidebarMenuSkeleton = ({

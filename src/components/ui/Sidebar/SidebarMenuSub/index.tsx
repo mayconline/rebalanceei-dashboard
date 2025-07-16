@@ -1,7 +1,8 @@
 import type { ComponentProps } from 'react';
 import { mergeClass } from '@/utils';
-import { SidebarMenuSubButton } from './SidebarMenuSubButton';
-import { SidebarMenuSubItem } from './SidebarMenuSubItem';
+
+export { SidebarMenuSubButton } from './SidebarMenuSubButton';
+export { SidebarMenuSubItem } from './SidebarMenuSubItem';
 
 export const SidebarMenuSub = ({
   className,
@@ -20,6 +21,3 @@ export const SidebarMenuSub = ({
     />
   );
 };
-
-SidebarMenuSub.Item = SidebarMenuSubItem;
-SidebarMenuSub.Button = SidebarMenuSubButton;

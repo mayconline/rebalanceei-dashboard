@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import { Separator } from '@/components/ui/separator';
+import { Separator } from '@/components/ui';
 import { mergeClass } from '@/utils';
 
 export const SidebarSeparator = ({

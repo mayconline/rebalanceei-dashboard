@@ -1,4 +1,4 @@
-import { PanelLeftIcon } from 'lucide-react';
+import { MenuIcon } from 'lucide-react';
 import type { ComponentProps } from 'react';
 import { mergeClass } from '@/utils';
 import { Button, ButtonSizes, ButtonVariants } from '../../Button';
@@ -24,7 +24,7 @@ export const SidebarTrigger = ({
       variant={ButtonVariants.Ghost}
       {...props}
     >
-      <PanelLeftIcon />
+      <MenuIcon />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );

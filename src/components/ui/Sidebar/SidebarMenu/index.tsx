@@ -1,10 +1,11 @@
 import type { ComponentProps } from 'react';
 import { mergeClass } from '@/utils';
-import { SidebarMenuAction } from './SidebarMenuAction';
-import { SidebarMenuBadge } from './SidebarMenuBadge';
-import { SidebarMenuButton } from './SidebarMenuButton';
-import { SidebarMenuItem } from './SidebarMenuItem';
-import { SidebarMenuSkeleton } from './SidebarMenuSkeleton';
+
+export { SidebarMenuAction } from './SidebarMenuAction';
+export { SidebarMenuBadge } from './SidebarMenuBadge';
+export { SidebarMenuButton } from './SidebarMenuButton';
+export { SidebarMenuItem } from './SidebarMenuItem';
+export { SidebarMenuSkeleton } from './SidebarMenuSkeleton';
 
 export const SidebarMenu = ({ className, ...props }: ComponentProps<'ul'>) => {
   return (
@@ -16,9 +17,3 @@ export const SidebarMenu = ({ className, ...props }: ComponentProps<'ul'>) => {
     />
   );
 };
-
-SidebarMenu.Item = SidebarMenuItem;
-SidebarMenu.Button = SidebarMenuButton;
-SidebarMenu.Action = SidebarMenuAction;
-SidebarMenu.Badge = SidebarMenuBadge;
-SidebarMenu.Skeleton = SidebarMenuSkeleton;

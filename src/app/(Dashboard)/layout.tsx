@@ -1,19 +1,24 @@
-import { ThemeSwitch } from '@/components/shared';
+import { AppSideBar } from '@/components/shared';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui';
+import { handleGetSidebarOpen } from '@/services/cookies';
 
-export default function PrivateLayout({
+export default async function PrivateLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { defaultOpenSidebar } = await handleGetSidebarOpen();
+
   return (
-    <main className="flex flex-row gap-4 bg-background-secondary">
-      <aside className="border-sidebar-custom-border-primary border-r bg-sidebar-custom-primary px-4 py-2">
-        Sidebar
-        <ThemeSwitch />
-      </aside>
-      <section className="h-screen w-full overflow-auto bg-background-secondary px-4 py-2">
-        {children}
-      </section>
-    </main>
+    <SidebarProvider defaultOpen={defaultOpenSidebar}>
+      <AppSideBar />
+
+      <SidebarInset>
+        <nav className="flex items-center justify-end">
+          <SidebarTrigger className="md:hidden" />
+        </nav>
+        <section className="p-4">{children}</section>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

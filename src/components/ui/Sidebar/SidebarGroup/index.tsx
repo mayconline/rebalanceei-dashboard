@@ -1,8 +1,9 @@
 import type { ComponentProps } from 'react';
 import { mergeClass } from '@/utils';
-import { SidebarGroupLabel } from './SideBarGroupLabel';
-import { SidebarGroupAction } from './SidebarGroupAction';
-import { SidebarGroupContent } from './SidebarGroupContent';
+
+export { SidebarGroupAction } from './SidebarGroupAction';
+export { SidebarGroupContent } from './SidebarGroupContent';
+export { SidebarGroupLabel } from './SidebarGroupLabel';
 
 export const SidebarGroup = ({
   className,
@@ -20,7 +21,3 @@ export const SidebarGroup = ({
     />
   );
 };
-
-SidebarGroup.Label = SidebarGroupLabel;
-SidebarGroup.Content = SidebarGroupContent;
-SidebarGroup.Action = SidebarGroupAction;

@@ -1,11 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type { ComponentProps } from 'react';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip } from '@/components/ui';
 import { mergeClass } from '@/utils';
 import { useSidebar } from '../..';
 
@@ -42,7 +38,7 @@ export const SidebarMenuButton = ({
 }: ComponentProps<'button'> & {
   asChild?: boolean;
   isActive?: boolean;
-  tooltip?: string | ComponentProps<typeof TooltipContent>;
+  tooltip?: string | ComponentProps<typeof Tooltip.Content>;
 } & VariantProps<typeof sidebarMenuButtonVariants>) => {
   const Comp = asChild ? Slot : 'button';
   const { isMobile, state } = useSidebar();
@@ -50,6 +46,7 @@ export const SidebarMenuButton = ({
   const button = (
     <Comp
       className={mergeClass(
+        'cursor-pointer',
         sidebarMenuButtonVariants({ variant, size }),
         className
       )}
@@ -72,14 +69,14 @@ export const SidebarMenuButton = ({
   }
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>{button}</TooltipTrigger>
-      <TooltipContent
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
+      <Tooltip.Content
         align="center"
         hidden={state !== 'collapsed' || isMobile}
         side="right"
         {...tooltip}
       />
-    </Tooltip>
+    </Tooltip.Root>
   );
 };
