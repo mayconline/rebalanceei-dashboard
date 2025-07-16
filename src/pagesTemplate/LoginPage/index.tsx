@@ -17,7 +17,7 @@ export default function LoginPage() {
         <Card.Description>
           <Paragraph size={ParagraphSize.Small}>
             Não tem uma conta?{' '}
-            <Link href="/signup" className="text-primary hover:underline">
+            <Link className="text-primary hover:underline" href="/signup">
               Cadastre-se aqui!
             </Link>
           </Paragraph>

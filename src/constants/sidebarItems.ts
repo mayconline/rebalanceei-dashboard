@@ -1,14 +1,27 @@
 import {
   ActivityIcon,
+  BadgeQuestionMarkIcon,
   ChartPieIcon,
+  CrownIcon,
   HandCoinsIcon,
+  LogOutIcon,
+  ShieldCheckIcon,
+  SmartphoneIcon,
+  SunMoonIcon,
   TrendingUpIcon,
+  UserLockIcon,
   WalletIcon,
   WalletMinimalIcon,
 } from 'lucide-react';
 import { LEVEL_ACCESS, ROUTES_PATH } from '@/constants';
+import { env } from '@/services';
 
-export const SIDEBAR_ITEMS = [
+const MAIN_NAV = [
+  {
+    title: 'Carteiras',
+    href: ROUTES_PATH.WALLETS,
+    icon: WalletMinimalIcon,
+  },
   {
     title: 'Ativos',
     href: ROUTES_PATH.TICKET,
@@ -43,3 +56,59 @@ export const SIDEBAR_ITEMS = [
     icon: ChartPieIcon,
   },
 ];
+
+const OTHER_NAV = [
+  {
+    title: 'Tema',
+    href: null,
+    icon: SunMoonIcon,
+  },
+  {
+    title: 'Ajuda',
+    href: ROUTES_PATH.HELP,
+    icon: BadgeQuestionMarkIcon,
+  },
+  {
+    title: 'Termos de uso',
+    href: env.NEXT_PUBLIC_PRIVACY_POLICY_URL,
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: 'App Rebalanceei',
+    href: 'https://play.google.com/store/apps/details?id=com.rebalanceei',
+    icon: SmartphoneIcon,
+  },
+];
+
+const USER_NAV = [
+  {
+    title: 'Minha Conta',
+    href: ROUTES_PATH.PROFILE,
+    icon: UserLockIcon,
+  },
+  {
+    title: 'Meu Plano Atual',
+    href: ROUTES_PATH.PLAN,
+    icon: CrownIcon,
+  },
+  {
+    title: 'Sair',
+    href: null,
+    icon: LogOutIcon,
+  },
+];
+
+export const SIDEBAR_ITEMS = {
+  mainNav: {
+    label: 'Principal',
+    items: MAIN_NAV,
+  },
+  otherNav: {
+    label: 'Outros',
+    items: OTHER_NAV,
+  },
+  userNav: {
+    label: 'Usuário',
+    items: USER_NAV,
+  },
+};
