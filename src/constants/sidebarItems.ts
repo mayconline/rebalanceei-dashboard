@@ -16,12 +16,15 @@ import {
 import { LEVEL_ACCESS, ROUTES_PATH } from '@/constants';
 import { env } from '@/services';
 
-const MAIN_NAV = [
+const HEADER_NAV = [
   {
     title: 'Carteiras',
     href: ROUTES_PATH.WALLETS,
     icon: WalletMinimalIcon,
   },
+];
+
+const MAIN_NAV = [
   {
     title: 'Ativos',
     href: ROUTES_PATH.TICKET,
@@ -99,6 +102,10 @@ const USER_NAV = [
 ];
 
 export const SIDEBAR_ITEMS = {
+  headerNav: {
+    label: 'Carteiras',
+    items: HEADER_NAV,
+  },
   mainNav: {
     label: 'Principal',
     items: MAIN_NAV,
