@@ -1,5 +1,22 @@
 export { Button, ButtonSizes, ButtonVariants } from './Button';
 export { Card } from './Card';
+export {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from './DropdownMenu';
 export { Form, useForm, useFormField } from './Form';
 export { Input } from './Input';
 export { Label } from './Label';
