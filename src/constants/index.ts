@@ -2,6 +2,7 @@ export { LEVEL_ACCESS } from './levelAccess';
 export { LOCAL_STORAGE } from './localStorage';
 export { METADATA, VIEWPORT } from './metadata';
 export { PUBLIC_ROUTES } from './publicRoutes';
+export { REACT_QUERY_KEYS } from './reactQueryKeys';
 export { ROUTES_PATH } from './routesPath';
 export {
   SIDEBAR_COOKIE_MAX_AGE,

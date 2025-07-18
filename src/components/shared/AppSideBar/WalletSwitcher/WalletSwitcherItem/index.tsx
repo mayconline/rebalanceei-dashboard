@@ -8,12 +8,13 @@ import {
   Paragraph,
   ParagraphSize,
 } from '@/components/ui';
-import type { WalletsResponseProps } from '@/types';
+import type { WalletProps } from '@/types';
+import { formatMoney, formatPercent } from '@/utils';
 
 interface WalletSwitcherItemProps {
-  wallet: WalletsResponseProps;
-  onEditWallet: (walletId: string) => void;
-  onSelectCurrentWallet: (wallet: WalletsResponseProps) => void;
+  wallet: WalletProps;
+  onEditWallet: (wallet: WalletProps) => void;
+  onSelectCurrentWallet: (wallet: WalletProps) => void;
 }
 
 export const WalletSwitcherItem = ({
@@ -24,11 +25,11 @@ export const WalletSwitcherItem = ({
   return (
     <DropdownMenuItem
       className="gap-2 p-2"
-      key={wallet.id}
+      key={wallet._id}
       onClick={() => onSelectCurrentWallet(wallet)}
     >
       <Button
-        onClick={() => onEditWallet(wallet.id)}
+        onClick={() => onEditWallet(wallet)}
         size={ButtonSizes.Icon}
         variant={ButtonVariants.Ghost}
       >
@@ -39,11 +40,13 @@ export const WalletSwitcherItem = ({
         <Paragraph className="max-w-28 truncate" size={ParagraphSize.Small}>
           {wallet.description}
         </Paragraph>
-        <DropdownMenuShortcut>R${wallet.sumAmountWallet}</DropdownMenuShortcut>
+        <DropdownMenuShortcut>
+          {formatMoney(wallet.sumAmountWallet)}
+        </DropdownMenuShortcut>
       </span>
 
       <DropdownMenuShortcut>
-        {wallet.percentPositionWallet}%
+        {formatPercent(wallet.percentPositionWallet)}
       </DropdownMenuShortcut>
     </DropdownMenuItem>
   );

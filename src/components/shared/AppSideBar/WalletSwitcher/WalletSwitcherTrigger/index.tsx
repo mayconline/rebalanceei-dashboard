@@ -4,16 +4,21 @@ import {
   Paragraph,
   ParagraphSize,
   SidebarMenuButton,
+  SidebarMenuSkeleton,
 } from '@/components/ui';
 
 interface WalletSwitcherTriggerProps {
   description?: string;
+  isLoading?: boolean;
 }
 
 export const WalletSwitcherTrigger = ({
   description,
+  isLoading = true,
 }: WalletSwitcherTriggerProps) => {
-  return (
+  return isLoading ? (
+    <SidebarMenuSkeleton showIcon />
+  ) : (
     <DropdownMenuTrigger asChild>
       <SidebarMenuButton
         className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"

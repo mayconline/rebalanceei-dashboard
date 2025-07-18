@@ -2,7 +2,6 @@
 
 import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { WalletSwitcherItem } from '@/components/shared/AppSideBar/WalletSwitcher/WalletSwitcherItem';
 import { WalletSwitcherTrigger } from '@/components/shared/AppSideBar/WalletSwitcher/WalletSwitcherTrigger';
 import {
@@ -17,22 +16,26 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui';
-import { ROUTES_PATH, SIDEBAR_ITEMS } from '@/constants';
-import type { WalletsResponseProps } from '@/types';
+import { ROUTES_PATH } from '@/constants';
+import { useGetWallets } from '@/hooks';
+import { useCurrentWallet } from '@/store';
+import type { WalletProps } from '@/types';
+import { formatMoney } from '@/utils';
 
 export function WalletSwitcher() {
-  const { headerNav } = SIDEBAR_ITEMS;
   const { isMobile } = useSidebar();
   const router = useRouter();
-  const [currentWallet, setCurrentWallet] = useState(headerNav.items[0]);
 
-  function handleEditWallet(walletId: string) {
-    const url = `${ROUTES_PATH.WALLETS}/${walletId}/edit`;
+  const { data: wallets, isLoading } = useGetWallets();
+  const { currentWallet, setCurrentWallet } = useCurrentWallet();
 
+  function handleEditWallet(wallet: WalletProps) {
+    setCurrentWallet(wallet);
+    const url = `${ROUTES_PATH.WALLETS}/${wallet?._id}/edit`;
     router.push(url);
   }
 
-  function handleSelectCurrentWallet(wallet: WalletsResponseProps) {
+  function handleSelectCurrentWallet(wallet: WalletProps) {
     setCurrentWallet(wallet);
   }
 
@@ -40,7 +43,10 @@ export function WalletSwitcher() {
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <WalletSwitcherTrigger description={currentWallet?.description} />
+          <WalletSwitcherTrigger
+            description={currentWallet?.description}
+            isLoading={isLoading}
+          />
 
           <DropdownMenuContent
             align="start"
@@ -51,9 +57,9 @@ export function WalletSwitcher() {
             <DropdownMenuLabel className="text-center text-muted-foreground text-xs">
               Carteiras
             </DropdownMenuLabel>
-            {headerNav?.items?.map((wallet) => (
+            {wallets?.map((wallet) => (
               <WalletSwitcherItem
-                key={wallet.id}
+                key={wallet._id}
                 onEditWallet={handleEditWallet}
                 onSelectCurrentWallet={handleSelectCurrentWallet}
                 wallet={wallet}
@@ -65,7 +71,7 @@ export function WalletSwitcher() {
               className="text-center text-muted-foreground"
               size={ParagraphSize.Small}
             >
-              {`Total: R$ ${headerNav?.items[0]?.sumAmountAllWallet}`}
+              {`Total:  ${formatMoney(wallets?.[0]?.sumAmountAllWallet ?? 0)}`}
             </Paragraph>
 
             <DropdownMenuSeparator />

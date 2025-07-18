@@ -1,10 +1,10 @@
 import { REFRESH_TOKEN } from '@/graphql/mutation';
 import { api } from '@/services/axios';
-import type { UpdateRefreshTokenResponse } from '@/types';
+import type { UpdateRefreshTokenResponseProps } from '@/types';
 
 export const handleRefreshToken = async (refreshToken: string) => {
   try {
-    const response = await api.post<UpdateRefreshTokenResponse>('/', {
+    const response = await api.post<UpdateRefreshTokenResponseProps>('/', {
       query: REFRESH_TOKEN,
       variables: {
         refreshToken,

@@ -16,30 +16,6 @@ import {
 import { LEVEL_ACCESS, ROUTES_PATH } from '@/constants';
 import { env } from '@/services';
 
-const HEADER_NAV = [
-  {
-    id: '1',
-    description: 'Ações',
-    sumAmountWallet: 1000.26,
-    percentPositionWallet: 70,
-    sumAmountAllWallet: 5000.26,
-  },
-  {
-    id: '2',
-    description: 'FII',
-    sumAmountWallet: 2000.12,
-    percentPositionWallet: 25,
-    sumAmountAllWallet: 5000.26,
-  },
-  {
-    id: '3',
-    description: 'Criptomoedas',
-    sumAmountWallet: 2_003_232.12,
-    percentPositionWallet: 5,
-    sumAmountAllWallet: 5000.26,
-  },
-];
-
 const MAIN_NAV = [
   {
     title: 'Ativos',
@@ -119,10 +95,6 @@ const USER_NAV = [
 ];
 
 export const SIDEBAR_ITEMS = {
-  headerNav: {
-    label: 'Carteiras',
-    items: HEADER_NAV,
-  },
   mainNav: {
     label: 'Principal',
     items: MAIN_NAV,

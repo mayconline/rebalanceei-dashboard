@@ -1,23 +1,32 @@
-import { type ComponentProps, type CSSProperties, useMemo } from 'react';
+import type { ComponentProps } from 'react';
 import { Skeleton } from '@/components/ui';
 import { mergeClass } from '@/utils';
+
+export enum SidebarMenuSkeletonVariants {
+  Large = 'large',
+}
+
+const sidebarMenuSkeletonClassesVariants = {
+  [SidebarMenuSkeletonVariants.Large]: 'h-8 w-full',
+};
+
+interface SidebarMenuSkeletonProps extends ComponentProps<'div'> {
+  showIcon?: boolean;
+  variant?: SidebarMenuSkeletonVariants;
+  iconSize?: string;
+}
 
 export const SidebarMenuSkeleton = ({
   className,
   showIcon = false,
+  variant = SidebarMenuSkeletonVariants.Large,
+  iconSize = 'size-8',
   ...props
-}: ComponentProps<'div'> & {
-  showIcon?: boolean;
-}) => {
-  // Random width between 50 to 90%.
-  const width = useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
-  }, []);
-
+}: SidebarMenuSkeletonProps) => {
   return (
     <div
       className={mergeClass(
-        'flex h-8 items-center gap-2 rounded-md px-2',
+        'flex h-8 items-center gap-2 rounded-md',
         className
       )}
       data-sidebar="menu-skeleton"
@@ -26,18 +35,16 @@ export const SidebarMenuSkeleton = ({
     >
       {showIcon && (
         <Skeleton
-          className="size-4 rounded-md"
+          className={mergeClass('shrink-0 rounded-md', iconSize)}
           data-sidebar="menu-skeleton-icon"
         />
       )}
       <Skeleton
-        className="h-4 max-w-(--skeleton-width) flex-1"
+        className={mergeClass(
+          'flex-1',
+          sidebarMenuSkeletonClassesVariants[variant]
+        )}
         data-sidebar="menu-skeleton-text"
-        style={
-          {
-            '--skeleton-width': width,
-          } as CSSProperties
-        }
       />
     </div>
   );

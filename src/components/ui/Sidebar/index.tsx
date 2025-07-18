@@ -39,6 +39,7 @@ export {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSkeleton,
+  SidebarMenuSkeletonVariants,
 } from './SidebarMenu';
 export {
   SidebarMenuSub,

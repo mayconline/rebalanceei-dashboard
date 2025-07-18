@@ -5,7 +5,10 @@ export { SidebarMenuAction } from './SidebarMenuAction';
 export { SidebarMenuBadge } from './SidebarMenuBadge';
 export { SidebarMenuButton } from './SidebarMenuButton';
 export { SidebarMenuItem } from './SidebarMenuItem';
-export { SidebarMenuSkeleton } from './SidebarMenuSkeleton';
+export {
+  SidebarMenuSkeleton,
+  SidebarMenuSkeletonVariants,
+} from './SidebarMenuSkeleton';
 
 export const SidebarMenu = ({ className, ...props }: ComponentProps<'ul'>) => {
   return (
