@@ -44,7 +44,7 @@ export const handleInterceptorErrorResponseAPI = async (
 
     try {
       const { accessToken, refreshToken: newRefreshToken } =
-        await handleRefreshToken(refreshToken as string);
+        await handleRefreshToken(String(refreshToken));
 
       handleSetAuthToken({ accessToken, refreshToken: newRefreshToken });
 
