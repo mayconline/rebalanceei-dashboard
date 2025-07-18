@@ -8,7 +8,7 @@ import { handleNotify } from '@/utils';
 
 export const useGetWallets = () => {
   const { currentWallet, setCurrentWallet } = useCurrentWallet();
-  const { data, isLoading, error, isError, isSuccess } = useQuery<
+  const { data, isPending, error, isError, isSuccess } = useQuery<
     WalletProps[]
   >({
     queryKey: [REACT_QUERY_KEYS.GET_WALLETS],
@@ -30,8 +30,8 @@ export const useGetWallets = () => {
   }, [error, isError]);
 
   return {
-    data,
-    isLoading,
+    wallets: data,
+    isPending,
     error,
     isSuccess,
     isError,

@@ -26,7 +26,7 @@ export function WalletSwitcher() {
   const { isMobile } = useSidebar();
   const router = useRouter();
 
-  const { data: wallets, isLoading } = useGetWallets();
+  const { wallets, isPending } = useGetWallets();
   const { currentWallet, setCurrentWallet } = useCurrentWallet();
 
   function handleEditWallet(wallet: WalletProps) {
@@ -45,7 +45,7 @@ export function WalletSwitcher() {
         <DropdownMenu>
           <WalletSwitcherTrigger
             description={currentWallet?.description}
-            isLoading={isLoading}
+            isLoading={isPending}
           />
 
           <DropdownMenuContent
