@@ -1,5 +1,3 @@
-import type { TicketProps } from '@/types';
-
 export type WalletProps = {
   _id: string;
   description: string;
@@ -9,7 +7,6 @@ export type WalletProps = {
   percentRentabilityWallet: number;
   percentPositionWallet: number;
   sumAmountAllWallet: number;
-  ticket: TicketProps[];
 };
 
 export type WalletsResponseProps = {

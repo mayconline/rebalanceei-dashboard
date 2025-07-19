@@ -9,15 +9,6 @@ export const GET_WALLETS_BY_USER = `
       percentRentabilityWallet
       percentPositionWallet
       sumAmountAllWallet
-      ticket {
-        _id
-        symbol
-        name
-        quantity
-        averagePrice
-        grade
-        classSymbol
-      }
     }
   }
 `;
