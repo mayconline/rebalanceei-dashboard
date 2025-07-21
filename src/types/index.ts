@@ -4,4 +4,13 @@ export type { SignUpRequestProps, SignUpResponseProps } from './signUpProps';
 export type { TicketProps } from './ticketsProps';
 export type { TokenProps } from './tokenProps';
 export type { UpdateRefreshTokenResponseProps } from './updateRefreshTokenProps';
-export type { WalletProps, WalletsResponseProps } from './walletsProps';
+export type {
+  CreateWalletRequestProps,
+  CreateWalletResponseProps,
+  DeleteWalletRequestProps,
+  DeleteWalletResponseProps,
+  UpdateWalletRequestProps,
+  UpdateWalletResponseProps,
+  WalletProps,
+  WalletsResponseProps,
+} from './walletsProps';

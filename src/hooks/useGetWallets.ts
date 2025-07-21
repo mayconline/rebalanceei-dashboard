@@ -24,7 +24,7 @@ export const useGetWallets = () => {
   useEffect(() => {
     if (isError) {
       handleNotify({
-        message: error?.message || 'Failed to fetch wallets',
+        message: error?.message || 'Erro ao buscar carteiras',
       });
     }
   }, [error, isError]);
