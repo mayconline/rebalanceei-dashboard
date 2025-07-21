@@ -1,20 +1,16 @@
 'use client';
 
-import * as LabelPrimitive from '@radix-ui/react-label';
-import type { ComponentProps } from 'react';
+import { type LabelProps, Root } from '@radix-ui/react-label';
 import { mergeClass } from '@/utils';
 
-export const Label = ({
-  className,
-  ...props
-}: ComponentProps<typeof LabelPrimitive.Root>) => {
+export const Label = ({ className, ...props }: LabelProps) => {
   return (
-    <LabelPrimitive.Root
-      data-slot="label"
+    <Root
       className={mergeClass(
-        'flex items-center gap-2 text-sm leading-none font-semibold select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50',
+        'flex select-none items-center gap-2 font-semibold text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50',
         className
       )}
+      data-slot="label"
       {...props}
     />
   );

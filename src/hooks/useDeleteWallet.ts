@@ -1,4 +1,5 @@
-import { REACT_QUERY_KEYS } from '@/constants';
+import { useRouter } from 'next/navigation';
+import { REACT_QUERY_KEYS, ROUTES_PATH } from '@/constants';
 import { useMutation, useQueryClient } from '@/services';
 import { deleteWallet } from '@/services/api';
 import { useCurrentWallet } from '@/store/useCurrentWallet';
@@ -6,10 +7,12 @@ import type { DeleteWalletRequestProps } from '@/types';
 import { handleNotify } from '@/utils';
 
 export const useDeleteWallet = () => {
-  const queryClient = useQueryClient();
+  const router = useRouter();
   const { currentWallet, resetCurrentWallet } = useCurrentWallet();
 
-  const { mutateAsync, isPending } = useMutation({
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending } = useMutation({
     mutationFn: (data: DeleteWalletRequestProps) => deleteWallet(data),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({
@@ -23,6 +26,8 @@ export const useDeleteWallet = () => {
       handleNotify({
         message: 'Carteira deletada com sucesso!',
       });
+
+      router.push(ROUTES_PATH.TICKET);
     },
     onError: (error) => {
       handleNotify({
@@ -32,7 +37,7 @@ export const useDeleteWallet = () => {
   });
 
   return {
-    deleteWallet: mutateAsync,
+    deleteWallet: (data: DeleteWalletRequestProps) => mutate(data),
     isPending,
   };
 };

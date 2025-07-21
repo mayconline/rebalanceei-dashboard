@@ -1,4 +1,5 @@
-import { REACT_QUERY_KEYS } from '@/constants';
+import { useRouter } from 'next/navigation';
+import { REACT_QUERY_KEYS, ROUTES_PATH } from '@/constants';
 import { useMutation, useQueryClient } from '@/services';
 import { createWallet } from '@/services/api';
 import { useCurrentWallet } from '@/store/useCurrentWallet';
@@ -6,10 +7,11 @@ import type { CreateWalletRequestProps } from '@/types';
 import { handleNotify } from '@/utils';
 
 export const useCreateWallet = () => {
+  const router = useRouter();
+  const setCurrentWallet = useCurrentWallet((state) => state.setCurrentWallet);
   const queryClient = useQueryClient();
-  const { setCurrentWallet } = useCurrentWallet();
 
-  const { mutateAsync, isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (data: CreateWalletRequestProps) => createWallet(data),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
@@ -19,6 +21,8 @@ export const useCreateWallet = () => {
       handleNotify({
         message: 'Carteira criada com sucesso!',
       });
+
+      router.push(ROUTES_PATH.TICKET);
     },
     onError: (error) => {
       handleNotify({
@@ -28,7 +32,7 @@ export const useCreateWallet = () => {
   });
 
   return {
-    createWallet: mutateAsync,
+    createWallet: (data: CreateWalletRequestProps) => mutate(data),
     isPending,
   };
 };

@@ -3,7 +3,7 @@ import { mergeClass } from '@/utils';
 
 export const Input = ({
   className,
-  type,
+  type = 'text',
   ...props
 }: ComponentProps<'input'>) => {
   return (

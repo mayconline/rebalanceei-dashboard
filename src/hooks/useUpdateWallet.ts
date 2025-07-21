@@ -1,4 +1,6 @@
-import { REACT_QUERY_KEYS } from '@/constants';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { REACT_QUERY_KEYS, ROUTES_PATH } from '@/constants';
 import { useMutation, useQueryClient } from '@/services';
 import { updateWallet } from '@/services/api';
 import { useCurrentWallet } from '@/store/useCurrentWallet';
@@ -6,10 +8,12 @@ import type { UpdateWalletRequestProps } from '@/types';
 import { handleNotify } from '@/utils';
 
 export const useUpdateWallet = () => {
-  const queryClient = useQueryClient();
+  const router = useRouter();
   const { currentWallet, updateDescriptionCurrentWallet } = useCurrentWallet();
 
-  const { mutateAsync, isPending } = useMutation({
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending } = useMutation({
     mutationFn: (data: UpdateWalletRequestProps) => updateWallet(data),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
@@ -23,6 +27,8 @@ export const useUpdateWallet = () => {
       handleNotify({
         message: 'Carteira atualizada com sucesso!',
       });
+
+      router.push(ROUTES_PATH.TICKET);
     },
     onError: (error) => {
       handleNotify({
@@ -31,8 +37,14 @@ export const useUpdateWallet = () => {
     },
   });
 
+  useEffect(() => {
+    if (!currentWallet?._id) {
+      router.push(ROUTES_PATH.TICKET);
+    }
+  }, [currentWallet?._id, router]);
+
   return {
-    updateWallet: mutateAsync,
+    updateWallet: (data: UpdateWalletRequestProps) => mutate(data),
     isPending,
   };
 };
