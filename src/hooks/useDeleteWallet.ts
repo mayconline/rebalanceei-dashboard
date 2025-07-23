@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation';
 import { REACT_QUERY_KEYS, ROUTES_PATH } from '@/constants';
 import { useMutation, useQueryClient } from '@/services';
 import { deleteWallet } from '@/services/api';
+import { useModalStore } from '@/store';
 import { useCurrentWallet } from '@/store/useCurrentWallet';
 import type { DeleteWalletRequestProps } from '@/types';
 import { handleNotify } from '@/utils';
@@ -9,10 +10,11 @@ import { handleNotify } from '@/utils';
 export const useDeleteWallet = () => {
   const router = useRouter();
   const { currentWallet, resetCurrentWallet } = useCurrentWallet();
+  const { openConfirmModal, setLoadingModal } = useModalStore();
 
   const queryClient = useQueryClient();
 
-  const { mutate, isPending } = useMutation({
+  const { mutateAsync, isPending } = useMutation({
     mutationFn: (data: DeleteWalletRequestProps) => deleteWallet(data),
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({
@@ -22,6 +24,8 @@ export const useDeleteWallet = () => {
       if (currentWallet?._id === variables._id) {
         resetCurrentWallet();
       }
+
+      setLoadingModal(false);
 
       handleNotify({
         message: 'Carteira deletada com sucesso!',
@@ -33,11 +37,24 @@ export const useDeleteWallet = () => {
       handleNotify({
         message: error?.message || 'Erro ao atualizar a carteira',
       });
+
+      setLoadingModal(false);
+    },
+    onMutate: () => {
+      setLoadingModal(true);
     },
   });
 
+  const handleDeleteWallet = (data: DeleteWalletRequestProps) => {
+    openConfirmModal({
+      title: 'Tem certeza que deseja excluir a carteira?',
+      description: 'Essa operação nao pode ser desfeita',
+      onConfirm: async () => await mutateAsync(data),
+    });
+  };
+
   return {
-    deleteWallet: (data: DeleteWalletRequestProps) => mutate(data),
+    deleteWallet: handleDeleteWallet,
     isPending,
   };
 };

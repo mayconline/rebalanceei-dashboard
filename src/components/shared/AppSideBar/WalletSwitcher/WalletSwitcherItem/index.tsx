@@ -27,6 +27,7 @@ export const WalletSwitcherItem = ({
       className="gap-2 p-2"
       key={wallet._id}
       onClick={() => onSelectCurrentWallet(wallet)}
+      onSelect={(e) => e.preventDefault()}
     >
       <Button
         onClick={() => onEditWallet(wallet)}

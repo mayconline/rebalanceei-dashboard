@@ -79,6 +79,7 @@ export function WalletSwitcher() {
             <DropdownMenuItem
               className="cursor-pointer justify-end gap-2 p-2"
               onClick={() => router.push(`${ROUTES_PATH.WALLETS}/add`)}
+              onSelect={(e) => e.preventDefault()}
             >
               <div className="font-medium text-muted-foreground">
                 Adicionar Carteira

@@ -1,28 +1,40 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { Card, Paragraph, ParagraphAs } from '@/components/ui';
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui';
 import { CreateWalletForm } from '@/modalTemplate/WalletModal/CreateWalletForm';
 import { UpdateWalletForm } from '@/modalTemplate/WalletModal/UpdateWalletForm';
 
 export default function WalletModal() {
   const params = useParams();
-  const isEditMode = useMemo(() => Boolean(params?._id), [params?._id]);
+  const router = useRouter();
+
+  const isEdit = useMemo(() => Boolean(params?.id), [params?.id]);
 
   return (
-    <Card.Container className="w-full max-w-sm">
-      <Card.Header>
-        <Card.Title>
-          <Paragraph as={ParagraphAs.H2}>
-            {isEditMode ? 'Alterar Carteira' : 'Criar Nova Carteira'}
-          </Paragraph>
-        </Card.Title>
-      </Card.Header>
-      <Card.Content>
-        {isEditMode ? <UpdateWalletForm /> : <CreateWalletForm />}
-      </Card.Content>
-    </Card.Container>
+    <Dialog defaultOpen={true} onOpenChange={() => router.back()}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>
+            {isEdit ? 'Editar Carteira' : 'Criar Nova Carteira'}
+          </DialogTitle>
+          {isEdit && (
+            <DialogDescription>
+              Alterar a descrição da carteira
+            </DialogDescription>
+          )}
+        </DialogHeader>
+
+        {!isEdit && <CreateWalletForm />}
+        {isEdit && <UpdateWalletForm />}
+      </DialogContent>
+    </Dialog>
   );
 }

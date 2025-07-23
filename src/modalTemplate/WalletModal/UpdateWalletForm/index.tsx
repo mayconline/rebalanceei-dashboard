@@ -8,6 +8,7 @@ import { UpdateWalletFormSchema, zodResolver } from '@/validations';
 
 export const UpdateWalletForm = () => {
   const currentWallet = useCurrentWallet((state) => state.currentWallet);
+
   const { updateWallet, isPending } = useUpdateWallet();
   const { deleteWallet, isPending: isPendingDelete } = useDeleteWallet();
 

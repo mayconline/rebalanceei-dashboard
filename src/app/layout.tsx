@@ -3,6 +3,7 @@ import { Titillium_Web } from 'next/font/google';
 import './globals.css';
 import { Notification } from '@/components/ui';
 import { METADATA, VIEWPORT } from '@/constants';
+import ConfirmModal from '@/modalTemplate/ConfirmModal';
 
 const titillium = Titillium_Web({
   variable: '--font-titillium',
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={`${titillium.variable} antialiased`}>
         {children}
         <Notification />
+        <ConfirmModal />
       </body>
     </html>
   );

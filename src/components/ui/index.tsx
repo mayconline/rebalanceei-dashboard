@@ -20,6 +20,18 @@ export {
 export { Form, useForm, useFormField } from './Form';
 export { Input } from './Input';
 export { Label } from './Label';
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from './Modal';
 export { Notification } from './Notification';
 export { Paragraph, ParagraphAs, ParagraphSize } from './Paragraph';
 export { Separator } from './Separator';

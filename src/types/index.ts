@@ -1,4 +1,5 @@
 export type { AuthResponseProps } from './authProps';
+export type { ConfirmModalProps } from './confirmModalProps';
 export type { LoginRequestProps, LoginResponseProps } from './loginProps';
 export type { SignUpRequestProps, SignUpResponseProps } from './signUpProps';
 export type { TicketProps } from './ticketsProps';
