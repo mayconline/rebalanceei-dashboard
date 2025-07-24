@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ThemeSwitch } from '@/components/shared';
 import { Card, Paragraph, ParagraphAs, ParagraphSize } from '@/components/ui';
 import { LoginForm } from '@/pagesTemplate/LoginPage/LoginForm';
 
@@ -9,6 +10,9 @@ export default function LoginPage() {
         <Card.Title>
           <Paragraph as={ParagraphAs.H2}>Bem vindo de Volta</Paragraph>
         </Card.Title>
+        <Card.Action>
+          <ThemeSwitch />
+        </Card.Action>
       </Card.Header>
       <Card.Content>
         <LoginForm />

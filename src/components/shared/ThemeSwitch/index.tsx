@@ -1,19 +1,19 @@
 'use client';
 
-import { Label, Switch } from '@/components/ui';
+import { SunMoonIcon } from 'lucide-react';
+import { Button, ButtonSizes, ButtonVariants } from '@/components/ui';
 import { useTheme } from '@/hooks';
 
 export const ThemeSwitch = () => {
-  const { theme, loading, handleToggleTheme } = useTheme();
+  const { handleToggleTheme } = useTheme();
 
-  return loading ? null : (
-    <div className="flex items-center justify-end space-x-2">
-      <Switch
-        checked={theme === 'light'}
-        id="theme-toggle"
-        onCheckedChange={handleToggleTheme}
-      />
-      <Label htmlFor="theme-toggle">{theme}</Label>
-    </div>
+  return (
+    <Button
+      onClick={handleToggleTheme}
+      size={ButtonSizes.Icon}
+      variant={ButtonVariants.Ghost}
+    >
+      <SunMoonIcon className="size-5" />
+    </Button>
   );
 };

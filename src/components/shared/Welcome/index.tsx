@@ -4,7 +4,7 @@ import { Paragraph, ParagraphAs, ParagraphSize } from '@/components/ui';
 
 export const Welcome = () => {
   return (
-    <section className="flex flex-col items-center justify-center gap-4">
+    <section className="flex flex-col items-center justify-center gap-4 rounded-xl border-x px-16 py-5">
       <Image alt="Rebalanceei Logo" height={195} src={Logo} width={192} />
       <Paragraph
         className="text-title-primary opacity-50"

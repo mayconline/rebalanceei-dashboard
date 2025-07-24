@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ThemeSwitch } from '@/components/shared';
 import { Card, Paragraph, ParagraphAs, ParagraphSize } from '@/components/ui';
 import { SignUpForm } from '@/pagesTemplate/SignUpPage/SignUpForm';
 
@@ -9,6 +10,9 @@ export default function SignUpPage() {
         <Card.Title>
           <Paragraph as={ParagraphAs.H2}>Crie sua conta</Paragraph>
         </Card.Title>
+        <Card.Action>
+          <ThemeSwitch />
+        </Card.Action>
       </Card.Header>
       <Card.Content>
         <SignUpForm />

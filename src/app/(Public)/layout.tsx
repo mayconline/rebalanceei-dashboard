@@ -1,4 +1,4 @@
-import { ThemeSwitch, Welcome } from '@/components/shared';
+import { Welcome } from '@/components/shared';
 
 export default function PublicLayout({
   children,
@@ -6,8 +6,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-8">
-      <ThemeSwitch />
+    <main className="flex min-h-screen flex-col items-center justify-center gap-8 md:flex-row-reverse">
       <Welcome />
       {children}
     </main>
