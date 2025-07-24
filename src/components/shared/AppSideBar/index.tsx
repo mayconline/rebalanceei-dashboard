@@ -4,6 +4,7 @@ import { WalletSwitcher } from '@/components/shared/AppSideBar/WalletSwitcher';
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarSeparator,
   SidebarTrigger,
@@ -20,8 +21,12 @@ export const AppSideBar = () => {
 
       <SidebarContent>
         <MainNavbar />
-        <OtherNavbar />
       </SidebarContent>
+
+      <SidebarFooter>
+        <SidebarSeparator />
+        <OtherNavbar />
+      </SidebarFooter>
     </Sidebar>
   );
 };
