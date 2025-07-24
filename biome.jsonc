@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
   "extends": ["ultracite"],
   "linter": {
     "rules": {
@@ -7,7 +7,11 @@
         "noExplicitAny": "off"
       },
       "style": {
-        "noEnum": "off"
+        "noEnum": "off",
+        "useFilenamingConvention": "off"
+      },
+      "nursery": {
+        "noUnknownAtRule": "off"
       }
     }
   }

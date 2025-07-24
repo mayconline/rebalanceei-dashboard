@@ -5,17 +5,17 @@ import { Paragraph, ParagraphAs, ParagraphSize } from '@/components/ui';
 export const Welcome = () => {
   return (
     <section className="flex flex-col items-center justify-center gap-4">
-      <Image src={Logo} alt="Rebalanceei Logo" width={192} height={195} />
+      <Image alt="Rebalanceei Logo" height={195} src={Logo} width={192} />
       <Paragraph
-        size={ParagraphSize.MegaLarge}
         className="text-title-primary opacity-50"
+        size={ParagraphSize.MegaLarge}
       >
         Seja Bem Vindo
       </Paragraph>
       <Paragraph
         as={ParagraphAs.H1}
-        size={ParagraphSize.GigaLarge}
         className="font-bold text-title-primary"
+        size={ParagraphSize.GigaLarge}
       >
         Rebalanceei
       </Paragraph>

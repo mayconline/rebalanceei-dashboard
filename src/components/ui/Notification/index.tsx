@@ -8,7 +8,6 @@ export const Notification = ({ ...props }: ToasterProps) => {
 
   return (
     <Sonner
-      theme={theme as ToasterProps['theme']}
       className="toaster group"
       style={
         {
@@ -17,6 +16,7 @@ export const Notification = ({ ...props }: ToasterProps) => {
           '--normal-border': 'var(--border)',
         } as React.CSSProperties
       }
+      theme={theme as ToasterProps['theme']}
       {...props}
     />
   );
