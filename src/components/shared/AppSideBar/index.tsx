@@ -1,5 +1,6 @@
 import { MainNavbar } from '@/components/shared/AppSideBar/MainNavbar';
 import { OtherNavbar } from '@/components/shared/AppSideBar/OtherNavbar';
+import { UserNavbar } from '@/components/shared/AppSideBar/UserNavbar';
 import { WalletSwitcher } from '@/components/shared/AppSideBar/WalletSwitcher';
 import {
   Sidebar,
@@ -21,11 +22,12 @@ export const AppSideBar = () => {
 
       <SidebarContent>
         <MainNavbar />
+        <OtherNavbar />
       </SidebarContent>
 
       <SidebarFooter>
         <SidebarSeparator />
-        <OtherNavbar />
+        <UserNavbar />
       </SidebarFooter>
     </Sidebar>
   );

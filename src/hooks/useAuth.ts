@@ -2,7 +2,8 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { ROUTES_PATH } from '@/constants';
 import { login, signUp } from '@/services/api';
-import { handleSetAuthToken } from '@/services/cookies';
+import { handleDeleteAuthToken, handleSetAuthToken } from '@/services/cookies';
+import { useCurrentWallet } from '@/store';
 import type {
   AuthResponseProps,
   LoginRequestProps,
@@ -11,7 +12,10 @@ import type {
 import { handleNotify } from '@/utils';
 
 export const useAuth = () => {
-  const route = useRouter();
+  const router = useRouter();
+  const resetCurrentWallet = useCurrentWallet(
+    (state) => state.resetCurrentWallet
+  );
 
   const handleLoginSuccessfully = useCallback(
     ({
@@ -28,9 +32,9 @@ export const useAuth = () => {
         message: `Seja Bem-vindo(a), ${email}!`,
       });
 
-      route.push(ROUTES_PATH.TICKET);
+      router.push(ROUTES_PATH.TICKET);
     },
-    [route]
+    [router]
   );
 
   const handleLogin = useCallback(
@@ -71,8 +75,16 @@ export const useAuth = () => {
     [handleLoginSuccessfully]
   );
 
+  const handleLogout = useCallback(() => {
+    resetCurrentWallet();
+    handleDeleteAuthToken();
+
+    router.push(ROUTES_PATH.LOGIN);
+  }, [resetCurrentWallet, router]);
+
   return {
     handleLogin,
     handleSignUp,
+    handleLogout,
   };
 };
