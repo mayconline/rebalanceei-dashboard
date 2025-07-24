@@ -12,6 +12,7 @@ export const deleteWallet = async ({ _id }: DeleteWalletRequestProps) => {
       variables: {
         _id,
       },
+      operationName: 'deleteWallet',
     });
 
     return response?.data?.data?.deleteWallet;

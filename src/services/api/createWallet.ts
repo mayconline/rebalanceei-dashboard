@@ -14,6 +14,7 @@ export const createWallet = async ({
       variables: {
         description,
       },
+      operationName: 'createWallet',
     });
 
     return response?.data?.data?.createWallet;

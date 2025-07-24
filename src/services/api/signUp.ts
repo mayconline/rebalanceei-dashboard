@@ -15,6 +15,7 @@ export const signUp = async ({
         password,
         checkTerms,
       },
+      operationName: 'createUser',
     });
 
     return response?.data?.data?.createUser;

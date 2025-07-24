@@ -10,6 +10,7 @@ export const login = async ({ email, password }: LoginRequestProps) => {
         email,
         password,
       },
+      operationName: 'login',
     });
 
     return response?.data?.data?.login;

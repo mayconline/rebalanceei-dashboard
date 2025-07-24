@@ -33,8 +33,9 @@ export const handleInterceptorErrorResponseAPI = async (
     error.message = 'Error connecting to server';
   }
 
-  const hasInvalidToken = error?.response?.data?.errors?.some((err: any) =>
-    err?.message?.includes('Token Invalid or Expired')
+  const hasInvalidToken = error?.response?.data?.errors?.some(
+    (err: any) =>
+      err?.message === 'Context creation failed: Token Invalid or Expired'
   );
 
   const { refreshToken } = handleGetAuthToken();
@@ -43,7 +44,7 @@ export const handleInterceptorErrorResponseAPI = async (
     configResponse.sent = true;
 
     try {
-      const { accessToken, refreshToken: newRefreshToken } =
+      const { token: accessToken, refreshToken: newRefreshToken } =
         await handleRefreshToken(String(refreshToken));
 
       handleSetAuthToken({ accessToken, refreshToken: newRefreshToken });

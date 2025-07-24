@@ -16,6 +16,7 @@ export const updateWallet = async ({
         _id,
         description,
       },
+      operationName: 'updateWallet',
     });
 
     return response?.data?.data?.updateWallet;

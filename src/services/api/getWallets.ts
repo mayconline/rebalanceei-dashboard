@@ -6,6 +6,7 @@ export const getWallets = async () => {
   try {
     const response = await api.post<WalletsResponseProps>('/', {
       query: GET_WALLETS_BY_USER,
+      operationName: 'getWalletByUser',
     });
 
     return response?.data?.data?.getWalletByUser;

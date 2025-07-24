@@ -1,5 +1,5 @@
 type UpdateRefreshTokenProps = {
-  accessToken: string;
+  token: string;
   refreshToken: string;
 };
 

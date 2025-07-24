@@ -9,6 +9,7 @@ export const handleRefreshToken = async (refreshToken: string) => {
       variables: {
         refreshToken,
       },
+      operationName: 'updateRefreshToken',
     });
 
     return response?.data?.data.updateRefreshToken;
