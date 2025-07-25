@@ -29,7 +29,7 @@ export const UserNavbar = () => {
           />
 
           <DropdownMenuContent
-            align="start"
+            align="end"
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side={isMobile ? 'bottom' : 'right'}
             sideOffset={4}
