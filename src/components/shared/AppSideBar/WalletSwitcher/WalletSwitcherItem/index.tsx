@@ -25,7 +25,6 @@ export const WalletSwitcherItem = ({
   return (
     <DropdownMenuItem
       className="gap-2 p-2"
-      key={wallet._id}
       onClick={() => onSelectCurrentWallet(wallet)}
       onSelect={(e) => e.preventDefault()}
     >

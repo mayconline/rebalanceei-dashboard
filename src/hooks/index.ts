@@ -1,6 +1,7 @@
 export { useAuth } from './useAuth';
 export { useCreateWallet } from './useCreateWallet';
 export { useDeleteWallet } from './useDeleteWallet';
+export { useGetUser } from './useGetUser';
 export { useGetWallets } from './useGetWallets';
 export { useIsMobile } from './useIsMobile';
 export { useLocalState } from './useLocalState';

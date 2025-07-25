@@ -18,11 +18,7 @@ export const useAuth = () => {
   );
 
   const handleLoginSuccessfully = useCallback(
-    ({
-      email,
-      token,
-      refreshToken,
-    }: Pick<AuthResponseProps, 'token' | 'refreshToken' | 'email'>) => {
+    ({ email, token, refreshToken }: AuthResponseProps) => {
       handleSetAuthToken({
         accessToken: token,
         refreshToken,
@@ -40,13 +36,9 @@ export const useAuth = () => {
   const handleLogin = useCallback(
     async (data: LoginRequestProps) => {
       try {
-        const { token, refreshToken, email } = await login(data);
+        const loginResponse = await login(data);
 
-        handleLoginSuccessfully({
-          token,
-          refreshToken,
-          email,
-        });
+        handleLoginSuccessfully(loginResponse);
       } catch (error: any) {
         handleNotify({
           message: error?.message,
@@ -59,13 +51,9 @@ export const useAuth = () => {
   const handleSignUp = useCallback(
     async (data: SignUpRequestProps) => {
       try {
-        const { token, refreshToken, email } = await signUp(data);
+        const signUpResponse = await signUp(data);
 
-        handleLoginSuccessfully({
-          token,
-          refreshToken,
-          email,
-        });
+        handleLoginSuccessfully(signUpResponse);
       } catch (error: any) {
         handleNotify({
           message: error?.message,

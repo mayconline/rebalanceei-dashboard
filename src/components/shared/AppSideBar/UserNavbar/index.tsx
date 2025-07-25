@@ -1,47 +1,52 @@
 'use client';
 
-import Link from 'next/link';
 import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
+  DropdownMenu,
+  DropdownMenuContent,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from '@/components/ui';
 import { SIDEBAR_ITEMS } from '@/constants';
-import { useAuth } from '@/hooks';
+import { useAuth, useGetUser } from '@/hooks';
+import { UserNavbarItem } from './UserNavbarItem';
+import { UserNavbarTrigger } from './UserNavbarTrigger';
 
 export const UserNavbar = () => {
   const { handleLogout } = useAuth();
+  const { user, isPending } = useGetUser();
+  const { isMobile } = useSidebar();
   const { userNav } = SIDEBAR_ITEMS;
 
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>{userNav.label}</SidebarGroupLabel>
-      <SidebarGroupContent>
-        <SidebarMenu>
-          {userNav.items.map(({ href, title, action, icon: Icon }) => (
-            <SidebarMenuItem key={title}>
-              {!!href && (
-                <SidebarMenuButton asChild>
-                  <Link href={href}>
-                    <Icon />
-                    <span>{title}</span>
-                  </Link>
-                </SidebarMenuButton>
-              )}
+    <SidebarMenu>
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <UserNavbarTrigger
+            avatar={null}
+            email={user?.email}
+            isLoading={isPending}
+          />
 
-              {action === 'logout' && (
-                <SidebarMenuButton onClick={handleLogout}>
-                  <Icon />
-                  <span>{title}</span>
-                </SidebarMenuButton>
-              )}
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-      </SidebarGroupContent>
-    </SidebarGroup>
+          <DropdownMenuContent
+            align="start"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            side={isMobile ? 'bottom' : 'right'}
+            sideOffset={4}
+          >
+            {userNav.items.map(({ href, title, action, icon: Icon }) => (
+              <UserNavbarItem
+                action={action}
+                href={href}
+                icon={Icon}
+                key={title}
+                onLogout={handleLogout}
+                title={title}
+              />
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    </SidebarMenu>
   );
 };
