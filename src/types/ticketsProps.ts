@@ -7,3 +7,14 @@ export type TicketProps = {
   grade: number;
   classSymbol: string;
 };
+
+export type TicketRequestProps = {
+  walletID: string;
+  sort?: string;
+};
+
+export type TicketResponseProps = {
+  data: {
+    getTicketsByWallet: TicketProps[];
+  };
+};

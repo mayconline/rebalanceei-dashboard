@@ -1,4 +1,4 @@
-import { GET_USER_BY_TOKEN } from '@/graphql/query/getUserByToken';
+import { GET_USER_BY_TOKEN } from '@/graphql/query';
 import { api } from '@/services/axios';
 import type { UserResponseProps } from '@/types';
 

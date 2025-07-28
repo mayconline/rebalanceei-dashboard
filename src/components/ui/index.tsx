@@ -65,4 +65,14 @@ export {
 } from './Sidebar';
 export { Skeleton } from './Skeleton';
 export { Switch } from './Switch';
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from './Table';
 export { Tooltip } from './Tooltip';

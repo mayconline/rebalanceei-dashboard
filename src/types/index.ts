@@ -3,7 +3,11 @@ export type { ConfirmModalProps } from './confirmModalProps';
 export type { LoginRequestProps, LoginResponseProps } from './loginProps';
 export type { PlanProps } from './planProps';
 export type { SignUpRequestProps, SignUpResponseProps } from './signUpProps';
-export type { TicketProps } from './ticketsProps';
+export type {
+  TicketProps,
+  TicketRequestProps,
+  TicketResponseProps,
+} from './ticketsProps';
 export type { TokenProps } from './tokenProps';
 export type { UpdateRefreshTokenResponseProps } from './updateRefreshTokenProps';
 export type { UserProps, UserResponseProps } from './userProps';
