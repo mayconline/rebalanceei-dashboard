@@ -1,15 +1,14 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui';
+'use client';
+
+import { DataTableBody } from '@/components/shared/DataTable/DataTableBody';
+import { DataTableHeader } from '@/components/shared/DataTable/DataTableHeader';
+import { DataTablePagination } from '@/components/shared/DataTable/DataTablePagination';
+import { Table } from '@/components/ui';
 import {
   type ColumnDef,
-  flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from '@/services/tanstackTable';
 
@@ -26,53 +25,18 @@ export const DataTable = <TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
 
   return (
     <div className="overflow-hidden rounded-md border">
       <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                data-state={row.getIsSelected() && 'selected'}
-                key={row.id}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell className="h-24 text-center" colSpan={columns.length}>
-                Nenhum ativo cadastrado
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
+        <DataTableHeader table={table} />
+        <DataTableBody columns={columns} table={table} />
       </Table>
+
+      <DataTablePagination table={table} />
     </div>
   );
 };

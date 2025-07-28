@@ -35,7 +35,7 @@ export const TicketActions = ({ ticket }: TicketActionsProps) => {
       <DropdownMenuTrigger asChild>
         <Button size={ButtonSizes.Icon} variant={ButtonVariants.Ghost}>
           <span className="sr-only">open menu</span>
-          <MoreHorizontal className="h-4 w-4" />
+          <MoreHorizontal className="size-4 shrink-0" />
         </Button>
       </DropdownMenuTrigger>
 

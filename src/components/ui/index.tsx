@@ -35,6 +35,18 @@ export {
 } from './Modal';
 export { Notification } from './Notification';
 export { Paragraph, ParagraphAs, ParagraphSize } from './Paragraph';
+export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from './Select';
 export { Separator } from './Separator';
 export { Sheet } from './Sheet';
 export {
