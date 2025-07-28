@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
-import { Loader2Icon } from 'lucide-react';
 import type { ComponentProps } from 'react';
+import { Spinner } from '@/components/ui';
 import { mergeClass } from '@/utils';
 
 export enum ButtonVariants {
@@ -70,7 +70,7 @@ export const Button = ({
       data-slot="button"
       {...props}
     >
-      {isLoading && <Loader2Icon className="size-4 animate-spin" />}
+      {isLoading && <Spinner />}
       {children}
     </Comp>
   );

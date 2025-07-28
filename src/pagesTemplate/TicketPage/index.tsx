@@ -1,6 +1,9 @@
 'use client';
 
+import { DataTable } from '@/components/shared';
+import { Spinner } from '@/components/ui';
 import { useGetTickets } from '@/hooks';
+import { ticketTableColumns } from '@/pagesTemplate/TicketPage/ticketTableColumns';
 
 export default function TicketPage() {
   const { tickets, isPending, isLoading } = useGetTickets();
@@ -9,14 +12,11 @@ export default function TicketPage() {
     <main>
       <h1>Tickets</h1>
       {isPending && <p>Nenhuma carteira selecionada</p>}
-      {isLoading && <p>Loading...</p>}
-      {!(isPending || tickets?.length) && <p>Nenhum ativo cadastrado</p>}
-      {tickets?.map((ticket) => (
-        <div key={ticket._id}>
-          <p>{ticket.symbol}</p>
-          <p>{ticket.name}</p>
-        </div>
-      ))}
+      {isLoading && <Spinner />}
+
+      <div className="container mx-auto py-10">
+        {tickets && <DataTable columns={ticketTableColumns} data={tickets} />}
+      </div>
     </main>
   );
 }

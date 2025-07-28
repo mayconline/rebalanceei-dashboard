@@ -64,6 +64,7 @@ export {
   useSidebar,
 } from './Sidebar';
 export { Skeleton } from './Skeleton';
+export { Spinner } from './Spinner';
 export { Switch } from './Switch';
 export {
   Table,
