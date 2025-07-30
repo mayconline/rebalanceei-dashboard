@@ -1,5 +1,7 @@
 export { useAuth } from './useAuth';
+export { useCreateTicket } from './useCreateTicket';
 export { useCreateWallet } from './useCreateWallet';
+export { useDeleteTicket } from './useDeleteTicket';
 export { useDeleteWallet } from './useDeleteWallet';
 export { useGetTickets } from './useGetTickets';
 export { useGetUser } from './useGetUser';
@@ -7,4 +9,5 @@ export { useGetWallets } from './useGetWallets';
 export { useIsMobile } from './useIsMobile';
 export { useLocalState } from './useLocalState';
 export { useTheme } from './useTheme';
+export { useUpdateTicket } from './useUpdateTicket';
 export { useUpdateWallet } from './useUpdateWallet';

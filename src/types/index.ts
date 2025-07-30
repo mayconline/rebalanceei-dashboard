@@ -4,9 +4,15 @@ export type { LoginRequestProps, LoginResponseProps } from './loginProps';
 export type { PlanProps } from './planProps';
 export type { SignUpRequestProps, SignUpResponseProps } from './signUpProps';
 export type {
+  CreateTicketRequestProps,
+  CreateTicketResponseProps,
+  DeleteTicketRequestProps,
+  DeleteTicketResponseProps,
   TicketProps,
   TicketRequestProps,
   TicketResponseProps,
+  UpdateTicketRequestProps,
+  UpdateTicketResponseProps,
 } from './ticketsProps';
 export type { TokenProps } from './tokenProps';
 export type { UpdateRefreshTokenResponseProps } from './updateRefreshTokenProps';

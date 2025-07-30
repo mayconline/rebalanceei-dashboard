@@ -1,4 +1,6 @@
+export { createTicket } from './createTicket';
 export { createWallet } from './createWallet';
+export { deleteTicket } from './deleteTicket';
 export { deleteWallet } from './deleteWallet';
 export { getTickets } from './getTickets';
 export { getUser } from './getUser';
@@ -6,4 +8,5 @@ export { getWallets } from './getWallets';
 export { handleRefreshToken } from './handleRefreshToken';
 export { login } from './login';
 export { signUp } from './signUp';
+export { updateTicket } from './updateTicket';
 export { updateWallet } from './updateWallet';
