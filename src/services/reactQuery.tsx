@@ -6,6 +6,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
+import { THIRTY_MINUTES } from '@/constants';
 import { handleNotify } from '@/utils';
 
 export {
@@ -29,6 +30,11 @@ export const queryClient = new QueryClient({
       });
     },
   }),
+  defaultOptions: {
+    queries: {
+      staleTime: THIRTY_MINUTES,
+    },
+  },
 });
 
 export const CustomQueryClientProvider = ({

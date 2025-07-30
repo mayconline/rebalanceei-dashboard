@@ -14,4 +14,5 @@ export {
 } from './sidebarConfig';
 export { SIDEBAR_ITEMS } from './sidebarItems';
 export { THEME_VARIANT } from './themeVariant';
+export { THIRTY_MINUTES } from './time';
 export { TOKENS } from './tokens';
