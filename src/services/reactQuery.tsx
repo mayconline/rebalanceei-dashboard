@@ -1,6 +1,12 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {
+  MutationCache,
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+import { handleNotify } from '@/utils';
 
 export {
   useMutation,
@@ -8,7 +14,22 @@ export {
   useQueryClient,
 } from '@tanstack/react-query';
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) => {
+      handleNotify({
+        message: error?.message || 'Erro ao buscar dados',
+      });
+    },
+  }),
+  mutationCache: new MutationCache({
+    onError: (error) => {
+      handleNotify({
+        message: error?.message || 'Erro ao buscar dados',
+      });
+    },
+  }),
+});
 
 export const CustomQueryClientProvider = ({
   children,

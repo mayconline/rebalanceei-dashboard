@@ -34,11 +34,7 @@ export const useUpdateWallet = () => {
 
       router.push(ROUTES_PATH.TICKET);
     },
-    onError: (error) => {
-      handleNotify({
-        message: error?.message || 'Erro ao atualizar a carteira',
-      });
-
+    onError: () => {
       setLoadingModal(false);
     },
     onMutate: () => {

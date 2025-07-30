@@ -24,11 +24,6 @@ export const useCreateWallet = () => {
 
       router.push(ROUTES_PATH.TICKET);
     },
-    onError: (error) => {
-      handleNotify({
-        message: error?.message || 'Erro ao criar carteira',
-      });
-    },
   });
 
   return {

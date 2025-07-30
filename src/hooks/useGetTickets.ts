@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
 import { REACT_QUERY_KEYS } from '@/constants';
 import { useQuery } from '@/services';
 import { getTickets } from '@/services/api';
 import { useCurrentWallet } from '@/store';
 import type { TicketProps } from '@/types';
-import { handleNotify } from '@/utils';
 
 export const useGetTickets = () => {
   const currentWallet = useCurrentWallet((state) => state?.currentWallet);
@@ -16,14 +14,6 @@ export const useGetTickets = () => {
     queryFn: () => getTickets({ walletID: currentWallet?._id ?? '' }),
     enabled: !!currentWallet?._id,
   });
-
-  useEffect(() => {
-    if (isError) {
-      handleNotify({
-        message: error?.message || 'Erro ao buscar tickets',
-      });
-    }
-  }, [error, isError]);
 
   return {
     tickets: data,
