@@ -53,7 +53,7 @@ export const UpdateWalletForm = () => {
             type="button"
             variant={ButtonVariants.Destructive}
           >
-            Deletar Carteira
+            Excluir Carteira
           </Button>
 
           <Button
@@ -65,7 +65,7 @@ export const UpdateWalletForm = () => {
             isLoading={isPending || form.formState.isSubmitting}
             type="submit"
           >
-            Atualizar Carteira
+            Alterar Carteira
           </Button>
         </footer>
       </form>

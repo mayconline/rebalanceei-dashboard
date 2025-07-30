@@ -28,7 +28,7 @@ export const useDeleteWallet = () => {
       setLoadingModal(false);
 
       handleNotify({
-        message: 'Carteira deletada com sucesso!',
+        message: 'Carteira excluida com sucesso!',
       });
 
       router.push(ROUTES_PATH.TICKET);

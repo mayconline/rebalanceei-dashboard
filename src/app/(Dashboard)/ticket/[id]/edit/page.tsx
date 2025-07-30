@@ -1,5 +1,5 @@
-import WalletModal from '@/modalTemplate/WalletModal';
+import TicketModal from '@/modalTemplate/TicketModal';
 
 export default function EditTicket() {
-  return <WalletModal />;
+  return <TicketModal />;
 }

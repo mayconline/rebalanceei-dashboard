@@ -22,7 +22,7 @@ export const useDeleteTicket = () => {
       setLoadingModal(false);
 
       handleNotify({
-        message: 'Ativo deletado com sucesso!',
+        message: 'Ativo excluido com sucesso!',
       });
 
       router.push(ROUTES_PATH.TICKET);
