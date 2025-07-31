@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui';
 import { ROUTES_PATH } from '@/constants';
+import { useDeleteTicket } from '@/hooks';
+import { useCurrentTicket, useCurrentWallet } from '@/store';
 import type { TicketProps } from '@/types';
 
 interface TicketActionsProps {
@@ -19,15 +21,20 @@ interface TicketActionsProps {
 
 export const TicketActions = ({ ticket }: TicketActionsProps) => {
   const router = useRouter();
+  const currentWallet = useCurrentWallet((state) => state?.currentWallet);
+  const setCurrentTicket = useCurrentTicket((state) => state.setCurrentTicket);
+  const { deleteTicket } = useDeleteTicket();
 
   function handleEditWallet(currentTicket: TicketProps) {
-    //    setCurrentTicket(ticket);
+    setCurrentTicket(currentTicket);
     const url = `${ROUTES_PATH.TICKET}/${currentTicket?._id}/edit`;
     router.push(url);
   }
 
-  function handleDeleteTicket(currentTicketId: TicketProps['_id']) {
-    //delete ticket
+  function handleDeleteWallet(currentTicket: TicketProps) {
+    if (currentWallet) {
+      deleteTicket({ _id: currentTicket._id, walletID: currentWallet?._id });
+    }
   }
 
   return (
@@ -44,7 +51,7 @@ export const TicketActions = ({ ticket }: TicketActionsProps) => {
         <DropdownMenuItem onClick={() => handleEditWallet(ticket)}>
           <SquarePenIcon className="size-4 shrink-0" /> Editar
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleDeleteTicket(ticket?._id)}>
+        <DropdownMenuItem onClick={() => handleDeleteWallet(ticket)}>
           <Trash2Icon className="size-4 shrink-0" /> Deletar
         </DropdownMenuItem>
       </DropdownMenuContent>

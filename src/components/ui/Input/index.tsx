@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import { mergeClass } from '@/utils';
 
-export const Input = ({
+const Input = ({
   className,
   type = 'text',
   ...props
@@ -20,3 +20,6 @@ export const Input = ({
     />
   );
 };
+
+export { CurrencyInput } from './CurrencyInput';
+export { Input };

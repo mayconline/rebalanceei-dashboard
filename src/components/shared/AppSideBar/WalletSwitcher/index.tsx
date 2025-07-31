@@ -1,6 +1,6 @@
 'use client';
 
-import { Plus } from 'lucide-react';
+import { PlusIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { WalletSwitcherItem } from '@/components/shared/AppSideBar/WalletSwitcher/WalletSwitcherItem';
 import { WalletSwitcherTrigger } from '@/components/shared/AppSideBar/WalletSwitcher/WalletSwitcherTrigger';
@@ -79,13 +79,12 @@ export function WalletSwitcher() {
             <DropdownMenuItem
               className="cursor-pointer justify-end gap-2 p-2"
               onClick={() => router.push(`${ROUTES_PATH.WALLETS}/add`)}
-              onSelect={(e) => e.preventDefault()}
             >
               <div className="font-medium text-muted-foreground">
                 Adicionar Carteira
               </div>
               <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                <Plus className="size-4" />
+                <PlusIcon className="size-4" />
               </div>
             </DropdownMenuItem>
           </DropdownMenuContent>

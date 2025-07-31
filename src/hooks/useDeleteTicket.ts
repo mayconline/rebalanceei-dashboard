@@ -2,12 +2,13 @@ import { useRouter } from 'next/navigation';
 import { REACT_QUERY_KEYS, ROUTES_PATH } from '@/constants';
 import { useMutation, useQueryClient } from '@/services';
 import { deleteTicket } from '@/services/api';
-import { useModalStore } from '@/store';
+import { useCurrentWallet, useModalStore } from '@/store';
 import type { DeleteTicketRequestProps } from '@/types';
 import { handleNotify } from '@/utils';
 
 export const useDeleteTicket = () => {
   const router = useRouter();
+  const currentWallet = useCurrentWallet((state) => state?.currentWallet);
   const { openConfirmModal, setLoadingModal } = useModalStore();
 
   const queryClient = useQueryClient();
@@ -16,7 +17,10 @@ export const useDeleteTicket = () => {
     mutationFn: (data: DeleteTicketRequestProps) => deleteTicket(data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [REACT_QUERY_KEYS.GET_TICKETS, REACT_QUERY_KEYS.GET_WALLETS],
+        queryKey: [REACT_QUERY_KEYS.GET_TICKETS, currentWallet?._id],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [REACT_QUERY_KEYS.GET_WALLETS],
       });
 
       setLoadingModal(false);

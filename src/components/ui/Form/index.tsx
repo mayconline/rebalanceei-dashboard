@@ -158,4 +158,9 @@ export const Form = {
 };
 
 export { useFormField };
-export { useForm } from 'react-hook-form';
+export {
+  type FieldValues,
+  type Path,
+  type UseFormReturn,
+  useForm,
+} from 'react-hook-form';
