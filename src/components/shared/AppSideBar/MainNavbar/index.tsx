@@ -23,7 +23,11 @@ export const MainNavbar = () => {
         <SidebarMenu>
           {mainNav.items.map(({ href, title, icon: Icon }) => (
             <SidebarMenuItem key={title}>
-              <SidebarMenuButton asChild isActive={pathname === href}>
+              <SidebarMenuButton
+                asChild
+                isActive={pathname === href}
+                tooltip={title}
+              >
                 <Link href={href}>
                   <Icon />
                   <span>{title}</span>

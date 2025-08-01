@@ -24,7 +24,7 @@ export const OtherNavbar = () => {
           {otherNav.items.map(({ href, title, action, icon: Icon }) => (
             <SidebarMenuItem key={title}>
               {!!href && (
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild tooltip={title}>
                   <Link href={href}>
                     <Icon />
                     <span>{title}</span>
@@ -33,7 +33,7 @@ export const OtherNavbar = () => {
               )}
 
               {action === 'toggleTheme' && (
-                <SidebarMenuButton onClick={handleToggleTheme}>
+                <SidebarMenuButton onClick={handleToggleTheme} tooltip={title}>
                   <Icon />
                   <span>{title}</span>
                 </SidebarMenuButton>

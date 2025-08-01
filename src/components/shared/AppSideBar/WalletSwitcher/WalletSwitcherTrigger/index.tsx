@@ -23,6 +23,7 @@ export const WalletSwitcherTrigger = ({
       <SidebarMenuButton
         className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
         size="lg"
+        tooltip={description ?? 'Selecione uma carteira'}
       >
         <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
           <WalletMinimalIcon className="size-4 shrink-0" />
