@@ -15,6 +15,8 @@ export const useGetSuggestions = ({
     queryFn: () => getSuggestions({ ticket: ticketSearched }),
     enabled: !!ticketSearched,
     select: (result: SuggestionProps[]) => {
+      //REMOVE DUPLICATES
+
       return result?.map((item) => ({
         id: item?.symbol,
         name: item?.longname,

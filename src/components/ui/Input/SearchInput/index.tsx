@@ -30,9 +30,7 @@ export const SearchInput = ({
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   function handleInputFocus() {
-    if (suggestionsList) {
-      setShowSuggestions(true);
-    }
+    setShowSuggestions(true);
   }
 
   function handleSelectSuggestion(suggestion: SuggestionsListProps) {

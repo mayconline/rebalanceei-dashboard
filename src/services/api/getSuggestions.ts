@@ -1,4 +1,4 @@
-import { suggestionsAPI } from '@/services';
+import axios from 'axios';
 import type {
   SuggestionsListRequestProps,
   SuggestionsListResponseProps,
@@ -8,19 +8,15 @@ export const getSuggestions = async ({
   ticket,
 }: SuggestionsListRequestProps) => {
   try {
-    const response = await suggestionsAPI.post<SuggestionsListResponseProps>(
-      '/search?',
-      {
-        params: {
-          q: ticket,
-        },
-      }
+    const response = await axios.post<SuggestionsListResponseProps>(
+      '/api/suggestions',
+      { ticket }
     );
 
     return response?.data?.quotes;
   } catch (error: any) {
     throw new Error(
-      error?.response?.data?.errors[0]?.message || 'Failed to fetch suggestions'
+      error?.response?.data?.error || 'Failed to fetch suggestions'
     );
   }
 };
