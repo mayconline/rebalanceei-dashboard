@@ -22,4 +22,5 @@ const Input = ({
 };
 
 export { CurrencyInput } from './CurrencyInput';
+export { SearchInput } from './SearchInput';
 export { Input };

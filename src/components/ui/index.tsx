@@ -2,6 +2,17 @@ export { Avatar, AvatarFallback, AvatarImage } from './Avatar';
 export { Button, ButtonSizes, ButtonVariants } from './Button';
 export { Card } from './Card';
 export {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from './Command';
+export {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -26,7 +37,7 @@ export {
   useForm,
   useFormField,
 } from './Form';
-export { CurrencyInput, Input } from './Input';
+export { CurrencyInput, Input, SearchInput } from './Input';
 export { Label } from './Label';
 export {
   Dialog,
@@ -42,6 +53,12 @@ export {
 } from './Modal';
 export { Notification } from './Notification';
 export { Paragraph, ParagraphAs, ParagraphSize } from './Paragraph';
+export {
+  Popover,
+  PopoverAnchor,
+  PopoverContent,
+  PopoverTrigger,
+} from './Popover';
 export {
   Select,
   SelectContent,

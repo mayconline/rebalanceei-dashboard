@@ -4,19 +4,25 @@ import {
   Form,
   Input,
   type Path,
+  SearchInput,
   type UseFormReturn,
 } from '@/components/ui';
+import type { SuggestionsListProps } from '@/types';
 
 interface TicketFieldsProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   showName?: boolean;
   disableSymbol?: boolean;
+  suggestionsList?: SuggestionsListProps[] | null;
+  isLoadingSuggestions?: boolean;
 }
 
 export function TicketFormFields<T extends FieldValues>({
   form,
   showName = true,
   disableSymbol = false,
+  suggestionsList = [],
+  isLoadingSuggestions = false,
 }: TicketFieldsProps<T>) {
   return (
     <>
@@ -27,9 +33,20 @@ export function TicketFormFields<T extends FieldValues>({
           render={({ field }) => (
             <Form.Item>
               <Form.Label>Pesquise e selecione um ativo</Form.Label>
+
               <Form.Control>
-                <Input placeholder="RBLC3" {...field} />
+                <SearchInput
+                  placeholder="RBLC3"
+                  {...field}
+                  isLoading={isLoadingSuggestions}
+                  onSelectSuggestion={(suggestion) => {
+                    form.setValue('name' as Path<T>, suggestion.name as any);
+                    form.setValue('symbol' as Path<T>, suggestion.id as any);
+                  }}
+                  suggestionsList={suggestionsList}
+                />
               </Form.Control>
+
               <Form.Message />
             </Form.Item>
           )}

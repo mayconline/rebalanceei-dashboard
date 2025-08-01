@@ -6,3 +6,4 @@ export {
   useQuery,
   useQueryClient,
 } from './reactQuery';
+export { suggestionsAPI } from './suggestions';

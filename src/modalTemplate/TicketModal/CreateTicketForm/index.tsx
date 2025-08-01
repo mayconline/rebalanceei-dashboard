@@ -30,7 +30,12 @@ export const CreateTicketForm = () => {
         className="w-full space-y-6"
         onSubmit={form.handleSubmit(createTicket)}
       >
-        <TicketFormFields form={form} showName />
+        <TicketFormFields
+          form={form}
+          isLoadingSuggestions={false}
+          showName
+          suggestionsList={null}
+        />
 
         <footer className="flex justify-end">
           <Button
