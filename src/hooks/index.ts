@@ -3,6 +3,7 @@ export { useCreateTicket } from './useCreateTicket';
 export { useCreateWallet } from './useCreateWallet';
 export { useDeleteTicket } from './useDeleteTicket';
 export { useDeleteWallet } from './useDeleteWallet';
+export { useGetSuggestions } from './useGetSuggestions';
 export { useGetTickets } from './useGetTickets';
 export { useGetUser } from './useGetUser';
 export { useGetWallets } from './useGetWallets';
