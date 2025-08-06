@@ -1,9 +1,9 @@
 import { ArrowUpDown } from 'lucide-react';
 import { Button, ButtonSizes, ButtonVariants } from '@/components/ui';
+import { TicketActions } from '@/pagesTemplate/TicketPage/TicketActions';
 import type { ColumnDef } from '@/services/tanstackTable';
 import type { TicketProps } from '@/types';
-import { formatMoney } from '@/utils';
-import { TicketActions } from './TicketActions';
+import { formatMoney, formatTicketSymbol } from '@/utils';
 
 export const ticketTableColumns: ColumnDef<TicketProps>[] = [
   {
@@ -23,7 +23,7 @@ export const ticketTableColumns: ColumnDef<TicketProps>[] = [
   },
   {
     accessorKey: 'name',
-    accessorFn: ({ symbol, name }) => `${symbol} - ${name}`,
+    accessorFn: ({ symbol, name }) => `${formatTicketSymbol(symbol)} - ${name}`,
     header: 'Nome',
   },
   {

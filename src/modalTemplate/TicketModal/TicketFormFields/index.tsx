@@ -1,49 +1,41 @@
 import {
+  AutoCompleteTicketInput,
   CurrencyInput,
   type FieldValues,
   Form,
   Input,
   type Path,
-  SearchInput,
   type UseFormReturn,
 } from '@/components/ui';
-import type { SuggestionsListProps } from '@/types';
+import { formatTicketSymbol } from '@/utils';
 
 interface TicketFieldsProps<T extends FieldValues> {
   form: UseFormReturn<T>;
-  showName?: boolean;
-  disableSymbol?: boolean;
-  suggestionsList?: SuggestionsListProps[] | null;
-  isLoadingSuggestions?: boolean;
+  showSearch?: boolean;
 }
 
 export function TicketFormFields<T extends FieldValues>({
   form,
-  showName = true,
-  disableSymbol = false,
-  suggestionsList = [],
-  isLoadingSuggestions = false,
+  showSearch = false,
 }: TicketFieldsProps<T>) {
   return (
     <>
-      {showName && (
+      {showSearch && (
         <Form.Field
           control={form.control}
-          name={'name' as Path<T>}
+          name={'search' as Path<T>}
           render={({ field }) => (
             <Form.Item>
               <Form.Label>Pesquise e selecione um ativo</Form.Label>
 
               <Form.Control>
-                <SearchInput
+                <AutoCompleteTicketInput
                   placeholder="RBLC3"
                   {...field}
-                  isLoading={isLoadingSuggestions}
                   onSelectSuggestion={(suggestion) => {
                     form.setValue('name' as Path<T>, suggestion.name as any);
                     form.setValue('symbol' as Path<T>, suggestion.id as any);
                   }}
-                  suggestionsList={suggestionsList}
                 />
               </Form.Control>
 
@@ -63,7 +55,8 @@ export function TicketFormFields<T extends FieldValues>({
                 <Input
                   placeholder="Nenhum ativo selecionado"
                   {...field}
-                  disabled={disableSymbol}
+                  disabled
+                  value={formatTicketSymbol(field.value)}
                 />
               </Form.Control>
               <Form.Message />

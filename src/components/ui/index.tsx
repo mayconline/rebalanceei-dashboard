@@ -9,6 +9,7 @@ export {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandLoading,
   CommandSeparator,
   CommandShortcut,
 } from './Command';
@@ -37,7 +38,12 @@ export {
   useForm,
   useFormField,
 } from './Form';
-export { CurrencyInput, Input, SearchInput } from './Input';
+export {
+  AutoCompleteTicketInput,
+  CurrencyInput,
+  Input,
+  SearchInput,
+} from './Input';
 export { Label } from './Label';
 export {
   Dialog,

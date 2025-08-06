@@ -10,7 +10,7 @@ export type SuggestionsListProps = {
 };
 
 export type SuggestionsListRequestProps = {
-  ticket: string;
+  ticket?: string;
 };
 
 export type SuggestionsListResponseProps = {

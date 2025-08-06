@@ -1,6 +1,7 @@
 export { useAuth } from './useAuth';
 export { useCreateTicket } from './useCreateTicket';
 export { useCreateWallet } from './useCreateWallet';
+export { useDebounce } from './useDebounce';
 export { useDeleteTicket } from './useDeleteTicket';
 export { useDeleteWallet } from './useDeleteWallet';
 export { useGetSuggestions } from './useGetSuggestions';

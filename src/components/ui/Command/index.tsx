@@ -178,3 +178,5 @@ export {
   CommandShortcut,
   CommandSeparator,
 };
+
+export { CommandLoading } from 'cmdk';

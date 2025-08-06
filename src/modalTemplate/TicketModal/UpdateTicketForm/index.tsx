@@ -32,7 +32,7 @@ export const UpdateTicketForm = () => {
         className="w-full space-y-6"
         onSubmit={form.handleSubmit(updateTicket)}
       >
-        <TicketFormFields disableSymbol form={form} />
+        <TicketFormFields form={form} />
 
         <footer className="flex items-center justify-between">
           <Button

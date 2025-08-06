@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Form, useForm } from '@/components/ui';
-import { useCreateTicket, useGetSuggestions } from '@/hooks';
+import { useCreateTicket } from '@/hooks';
 import { TicketFormFields } from '@/modalTemplate/TicketModal/TicketFormFields';
 import { useCurrentWallet } from '@/store';
 import type { CreateTicketRequestProps } from '@/types';
@@ -24,23 +24,13 @@ export const CreateTicketForm = () => {
     },
   });
 
-  const { suggestionsList, isLoading: isLoadingSuggestions } =
-    useGetSuggestions({
-      ticketSearched: form.watch('name'),
-    });
-
   return (
     <Form.Provider {...form}>
       <form
         className="w-full space-y-6"
         onSubmit={form.handleSubmit(createTicket)}
       >
-        <TicketFormFields
-          form={form}
-          isLoadingSuggestions={isLoadingSuggestions}
-          showName
-          suggestionsList={suggestionsList}
-        />
+        <TicketFormFields form={form} showSearch />
 
         <footer className="flex justify-end">
           <Button

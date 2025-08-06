@@ -21,6 +21,7 @@ const Input = ({
   );
 };
 
+export { AutoCompleteTicketInput } from './AutoCompleteTicketInput';
 export { CurrencyInput } from './CurrencyInput';
 export { SearchInput } from './SearchInput';
 export { Input };
