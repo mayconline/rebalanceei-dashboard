@@ -1,4 +1,5 @@
 export {
+  type Column,
   type ColumnDef,
   flexRender,
   getCoreRowModel,

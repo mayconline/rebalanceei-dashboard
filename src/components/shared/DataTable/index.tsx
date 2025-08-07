@@ -40,3 +40,5 @@ export const DataTable = <TData, TValue>({
     </div>
   );
 };
+
+export { DataTableColumnHeader } from './DataTableColumnHeader';

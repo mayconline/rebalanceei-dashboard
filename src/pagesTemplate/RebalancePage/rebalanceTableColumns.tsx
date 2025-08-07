@@ -1,5 +1,4 @@
-import { ArrowUpDown } from 'lucide-react';
-import { Button, ButtonSizes, ButtonVariants } from '@/components/ui';
+import { DataTableColumnHeader } from '@/components/shared';
 import type { ColumnDef } from '@/services/tanstackTable';
 import type { RebalancesProps } from '@/types';
 import {
@@ -15,35 +14,36 @@ export const rebalanceTableColumns: ColumnDef<RebalancesProps>[] = [
     accessorFn: ({ symbol, longName }) =>
       `${formatTicketSymbol(symbol)} - ${longName}`,
     header: ({ column }) => {
-      return (
-        <Button
-          onClick={column.getToggleSortingHandler()}
-          size={ButtonSizes.Sm}
-          variant={ButtonVariants.Ghost}
-        >
-          Nome
-          <ArrowUpDown className="size-4 shrink-0" />
-        </Button>
-      );
+      return <DataTableColumnHeader column={column} title="Nome" />;
     },
   },
   {
     accessorKey: 'currentPercent',
-    header: 'Porcentagem Atual',
+    header: ({ column }) => {
+      return (
+        <DataTableColumnHeader column={column} title="Porcentagem Atual" />
+      );
+    },
     cell: ({ row }) => {
       return formatPercent(row.getValue('currentPercent'));
     },
   },
   {
     accessorKey: 'gradePercent',
-    header: 'Porcentagem Ideal',
+    header: ({ column }) => {
+      return (
+        <DataTableColumnHeader column={column} title="Porcentagem Ideal" />
+      );
+    },
     cell: ({ row }) => {
       return formatPercent(row.getValue('gradePercent'));
     },
   },
   {
     accessorKey: 'status',
-    header: 'Status',
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title="Status" />;
+    },
     cell: ({ row }) => {
       return formatStatus(row.getValue('status'));
     },
@@ -52,14 +52,10 @@ export const rebalanceTableColumns: ColumnDef<RebalancesProps>[] = [
     accessorKey: 'targetAmount',
     header: ({ column }) => {
       return (
-        <Button
-          onClick={column.getToggleSortingHandler()}
-          size={ButtonSizes.Sm}
-          variant={ButtonVariants.Ghost}
-        >
-          Valor para rebalancear
-          <ArrowUpDown className="size-4 shrink-0" />
-        </Button>
+        <DataTableColumnHeader
+          column={column}
+          title=" Valor para rebalancear"
+        />
       );
     },
     cell: ({ row }) => {
