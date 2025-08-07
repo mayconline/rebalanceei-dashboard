@@ -12,7 +12,7 @@ export type RebalancesProps = {
 
 export type RebalancesRequestProps = {
   walletID: string;
-  sort?: string;
+  sort?: 'symbol' | 'targetAmount' | 'currentPercent' | 'gradePercent';
 };
 
 export type RebalancesResponseProps = {

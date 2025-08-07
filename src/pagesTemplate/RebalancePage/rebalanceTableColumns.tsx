@@ -20,9 +20,7 @@ export const rebalanceTableColumns: ColumnDef<RebalancesProps>[] = [
   {
     accessorKey: 'currentPercent',
     header: ({ column }) => {
-      return (
-        <DataTableColumnHeader column={column} title="Porcentagem Atual" />
-      );
+      return <DataTableColumnHeader column={column} title="% Atual" />;
     },
     cell: ({ row }) => {
       return formatPercent(row.getValue('currentPercent'));
@@ -31,9 +29,7 @@ export const rebalanceTableColumns: ColumnDef<RebalancesProps>[] = [
   {
     accessorKey: 'gradePercent',
     header: ({ column }) => {
-      return (
-        <DataTableColumnHeader column={column} title="Porcentagem Ideal" />
-      );
+      return <DataTableColumnHeader column={column} title="% Ideal" />;
     },
     cell: ({ row }) => {
       return formatPercent(row.getValue('gradePercent'));
@@ -51,12 +47,7 @@ export const rebalanceTableColumns: ColumnDef<RebalancesProps>[] = [
   {
     accessorKey: 'targetAmount',
     header: ({ column }) => {
-      return (
-        <DataTableColumnHeader
-          column={column}
-          title=" Valor para rebalancear"
-        />
-      );
+      return <DataTableColumnHeader column={column} title="Valor" />;
     },
     cell: ({ row }) => {
       return formatMoney(row.getValue('targetAmount'));

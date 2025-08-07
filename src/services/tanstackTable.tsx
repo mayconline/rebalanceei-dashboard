@@ -3,6 +3,7 @@ export {
   type ColumnDef,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   type SortingState,

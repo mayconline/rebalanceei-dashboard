@@ -10,7 +10,7 @@ export type TicketProps = {
 
 export type TicketRequestProps = {
   walletID: string;
-  sort?: string;
+  sort?: 'symbol' | 'grade';
 };
 
 export type TicketResponseProps = {

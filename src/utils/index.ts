@@ -1,3 +1,4 @@
+export { formatColumnName } from './formatColumnName';
 export { formatMoney } from './formatMoney';
 export { formatPercent } from './formatPercent';
 export { formatStatus } from './formatStatus';
