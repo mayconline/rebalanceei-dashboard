@@ -7,6 +7,11 @@ export type {
   RebalancesRequestProps,
   RebalancesResponseProps,
 } from './rebalancesProps';
+export type {
+  rentabilityProps,
+  rentabilityRequestProps,
+  rentabilityResponseProps,
+} from './rentabilityProps';
 export type { SignUpRequestProps, SignUpResponseProps } from './signUpProps';
 export type {
   SuggestionProps,

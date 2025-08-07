@@ -4,4 +4,5 @@ export enum REACT_QUERY_KEYS {
   GET_TICKETS = 'get-tickets',
   GET_SUGGESTIONS = 'get-suggestions',
   GET_REBALANCES = 'get-rebalances',
+  GET_RENTABILITIES = 'get-rentabilities',
 }

@@ -9,6 +9,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from '@/components/ui';
 import { SIDEBAR_ITEMS } from '@/constants';
 
@@ -21,7 +24,7 @@ export const MainNavbar = () => {
       <SidebarGroupLabel>{mainNav.label}</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu>
-          {mainNav.items.map(({ href, title, icon: Icon }) => (
+          {mainNav.items.map(({ href, title, icon: Icon, childrens }) => (
             <SidebarMenuItem key={title}>
               <SidebarMenuButton
                 asChild
@@ -33,6 +36,26 @@ export const MainNavbar = () => {
                   <span>{title}</span>
                 </Link>
               </SidebarMenuButton>
+
+              {childrens?.length && (
+                <SidebarMenuSub>
+                  {childrens.map(
+                    ({ href: subRef, title: subTitle, icon: SubIcon }) => (
+                      <SidebarMenuSubItem key={subTitle}>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={pathname === subRef}
+                        >
+                          <Link href={subRef}>
+                            <SubIcon />
+                            <span>{subTitle}</span>
+                          </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    )
+                  )}
+                </SidebarMenuSub>
+              )}
             </SidebarMenuItem>
           ))}
         </SidebarMenu>

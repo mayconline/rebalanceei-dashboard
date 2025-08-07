@@ -1,3 +1,5 @@
+import RentabilityWalletPage from '@/pagesTemplate/RentabilityPage/RentabilityWalletPage';
+
 export default function RentabilityWallet() {
-  return <div>Rentability Wallet</div>;
+  return <RentabilityWalletPage />;
 }
