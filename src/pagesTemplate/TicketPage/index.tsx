@@ -29,7 +29,7 @@ export default function TicketPage() {
         )}
       </header>
       <div className="container mx-auto py-10">
-        {isPending && <p>Nenhuma carteira selecionada</p>}
+        {!isLoading && isPending && <p>Nenhuma carteira selecionada</p>}
         {isLoading && <Spinner />}
         {tickets && <DataTable columns={ticketTableColumns} data={tickets} />}
       </div>

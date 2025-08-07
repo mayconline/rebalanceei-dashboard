@@ -2,6 +2,7 @@ export { createTicket } from './createTicket';
 export { createWallet } from './createWallet';
 export { deleteTicket } from './deleteTicket';
 export { deleteWallet } from './deleteWallet';
+export { getRebalances } from './getRebalances';
 export { getSuggestions } from './getSuggestions';
 export { getTickets } from './getTickets';
 export { getUser } from './getUser';

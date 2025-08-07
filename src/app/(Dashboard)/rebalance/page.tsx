@@ -1,3 +1,5 @@
+import RebalancePage from '@/pagesTemplate/RebalancePage';
+
 export default function Rebalance() {
-  return <div>rebalance</div>;
+  return <RebalancePage />;
 }

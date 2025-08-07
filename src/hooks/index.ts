@@ -4,6 +4,7 @@ export { useCreateWallet } from './useCreateWallet';
 export { useDebounce } from './useDebounce';
 export { useDeleteTicket } from './useDeleteTicket';
 export { useDeleteWallet } from './useDeleteWallet';
+export { useGetRebalances } from './useGetRebalances';
 export { useGetSuggestions } from './useGetSuggestions';
 export { useGetTickets } from './useGetTickets';
 export { useGetUser } from './useGetUser';
