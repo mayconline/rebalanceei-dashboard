@@ -9,15 +9,9 @@ const ticketFields = {
   name: z
     .string()
     .min(1, { message: 'Name must be at least 1 characters long' }),
-  quantity: z
-    .number()
-    .min(1, { message: 'Quantity must be at least 1 characters long' }),
-  averagePrice: z
-    .number()
-    .min(1, { message: 'Average price must be at least 1 characters long' }),
-  grade: z
-    .number()
-    .min(1, { message: 'Grade must be at least 1 characters long' }),
+  quantity: z.number({ message: 'Quantity is required' }),
+  averagePrice: z.number({ message: 'Average price is required' }),
+  grade: z.number({ message: 'Grade is required' }),
 };
 
 export const CreateTicketFormSchema = z.object({
